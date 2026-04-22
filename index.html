@@ -1,53 +1,1103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="google-adsense-account" content="ca-pub-1460224105367515">
-  <title>HamameApp 公式サイト</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HamameAppの公式サイト。iPhone向けアプリの情報とサポート窓口をご案内します。">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HamameApp | パズルアプリ公式サイト</title>
+  <meta
+    name="description"
+    content="HamameApp は、数独やロジックパズルを中心に、シンプルで気持ちよく遊べるアプリとWebパズルを提供しています。"
+  />
+  <meta name="theme-color" content="#0f172a" />
   <style>
-    body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.8;
+    :root {
+      --bg: #f7f9fc;
+      --surface: rgba(255, 255, 255, 0.82);
+      --text: #0f172a;
+      --text-soft: #475569;
+      --line: rgba(15, 23, 42, 0.10);
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #7c3aed;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
+      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --max-width: 1180px;
     }
-    header, footer { text-align: center; opacity: 0.85; }
-    h1 { font-size: 28px; margin-bottom: 0.5em; }
-    p { font-size: 16px; }
-    nav { text-align: center; margin: 24px 0; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        Meiryo,
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent 26%),
+        linear-gradient(180deg, #f9fbff 0%, #f5f8fc 45%, #eef3f9 100%);
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(247, 249, 252, 0.72);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-sub {
+      margin: 2px 0 0;
+      color: var(--text-soft);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+    }
+
+    .nav .nav-cta {
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav .nav-cta:hover {
+      background: #0b1223;
+      color: #fff;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 4vw, 4.3rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .lead {
+      margin: 22px 0 0;
+      color: var(--text-soft);
+      font-size: clamp(1.02rem, 1.6vw, 1.16rem);
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .button.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.20);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      border-color: rgba(15, 23, 42, 0.08);
+    }
+
+    .button.secondary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .meta-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      color: var(--text-soft);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .glow {
+      position: absolute;
+      width: 78%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.12), transparent 68%);
+      filter: blur(8px);
+    }
+
+    .device-shell {
+      position: relative;
+      width: min(100%, 430px);
+      border-radius: 36px;
+      padding: 14px;
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.98));
+      box-shadow:
+        0 28px 80px rgba(15, 23, 42, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .device-notch {
+      width: 36%;
+      height: 26px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .device-screen {
+      background:
+        linear-gradient(180deg, #0f172a 0%, #172554 100%);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 22px;
+      min-height: 460px;
+      color: #fff;
+    }
+
+    .screen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .screen-title {
+      margin: 18px 0 8px;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .screen-text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .mini-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .mini-cell {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .float-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.70);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .float-card strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .float-card span {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .float-card.one {
+      top: 8%;
+      right: -5%;
+    }
+
+    .float-card.two {
+      bottom: 10%;
+      left: -6%;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-label {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(1.85rem, 3vw, 2.8rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      margin: 14px 0 0;
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+    }
+
+    .apps-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+    }
+
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .app-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .app-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+      flex-shrink: 0;
+    }
+
+    .app-icon.blue {
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    }
+
+    .app-icon.purple {
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+    }
+
+    .app-icon.green {
+      background: linear-gradient(135deg, #059669, #14b8a6);
+    }
+
+    .app-title {
+      margin: 0;
+      font-size: 1.16rem;
+      line-height: 1.35;
+    }
+
+    .app-sub {
+      margin: 4px 0 0;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .app-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 22px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.05);
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .mini-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      transition: 0.25s ease;
+    }
+
+    .mini-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(37, 99, 235, 0.18);
+      color: var(--primary-dark);
+    }
+
+    .mini-button.primary {
+      border-color: transparent;
+      background: var(--text);
+      color: #fff;
+    }
+
+    .mini-button.primary:hover {
+      color: #fff;
+      background: #0b1223;
+    }
+
+    .features-wrap {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-item {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .feature-item .num {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.10);
+      color: var(--primary-dark);
+      font-size: 0.88rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .feature-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .feature-item p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .feature-panel {
+      background:
+        linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
+      color: #fff;
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-panel::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      top: -70px;
+      right: -50px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.30), transparent 65%);
+    }
+
+    .feature-panel h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+      line-height: 1.35;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-panel p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.80);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .support-box {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.08));
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .support-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .support-box p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .support-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-footer {
+      padding: 26px 0 42px;
+    }
+
+    .footer-card {
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-title {
+      margin: 0;
+      font-size: 1.06rem;
+      font-weight: 800;
+    }
+
+    .footer-copy {
+      margin: 6px 0 0;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.05);
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .footer-links a:hover {
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary-dark);
+    }
+
+    .copyright {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .features-wrap,
+      .support-box {
+        grid-template-columns: 1fr;
+      }
+
+      .apps-grid,
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .float-card.one,
+      .float-card.two {
+        position: static;
+        margin-top: 14px;
+      }
+
+      .support-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav a {
+        padding: 9px 12px;
+        font-size: 0.9rem;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero-actions,
+      .card-actions,
+      .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button,
+      .mini-button {
+        width: 100%;
+      }
+
+      .feature-list,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>HamameApp 公式サイト</h1>
-    <p>iPhone向けアプリの公式情報とサポート窓口</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./">
+        <div class="brand-mark">H</div>
+        <div>
+          <p class="brand-name">HamameApp</p>
+          <p class="brand-sub">パズルアプリ・Webパズルの公式サイト</p>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <a href="#apps">アプリ</a>
+        <a href="#features">特長</a>
+        <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
+        <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
+        <a href="./about.html">運営者情報</a>
+        <a href="./support.html" class="nav-cta">サポート</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <p>当サイトでは、HamameAppが提供するアプリに関する最新情報、サポート窓口、プライバシーポリシーなどをご案内します。</p>
-    <p>アプリに関するご意見・ご要望・不具合報告は、下記メールアドレスまでご連絡ください。</p>
-    <p><strong>メールアドレス：</strong> hamameapp@gmail.com</p>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Official Site / Puzzle App Studio</div>
+          <h1>
+            毎日を少し楽しくする、<br />
+            シンプルで気持ちいい<br />
+            パズル体験。
+          </h1>
+          <p class="lead">
+            HamameApp は、数独やロジックパズルを中心に、
+            直感的に遊べて、長く付き合えるアプリとWebパズルを制作しています。
+            使いやすさ、快適さ、分かりやすさを大切にした公式サイトです。
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="./apps.html">アプリを見る</a>
+            <a class="button secondary" href="./sudoku/">ナンプレ先生を試す</a>
+            <a class="button secondary" href="https://game.hamameapp.xyz/">合体ナンプレを遊ぶ</a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-chip">iPhone / Web で展開</div>
+            <div class="meta-chip">シンプルな操作性</div>
+            <div class="meta-chip">プライバシーに配慮</div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="glow"></div>
+
+          <div class="device-shell">
+            <div class="device-notch"></div>
+            <div class="device-screen">
+              <div class="screen-badge">Featured Puzzle Experience</div>
+              <h2 class="screen-title">考える時間が、<br>気持ちよく続く設計へ。</h2>
+              <p class="screen-text">
+                数独、合体ナンプレ、ナンバースケルトンなど、
+                ひらめきとロジックの心地よさを、すっきりしたUIで届けます。
+              </p>
+
+              <div class="mini-grid">
+                <div class="mini-cell">5</div>
+                <div class="mini-cell">8</div>
+                <div class="mini-cell">2</div>
+                <div class="mini-cell">7</div>
+                <div class="mini-cell">3</div>
+                <div class="mini-cell">9</div>
+                <div class="mini-cell">1</div>
+                <div class="mini-cell">6</div>
+                <div class="mini-cell">4</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-card one">
+            <strong>直感的なUI</strong>
+            <span>迷わず遊べる設計</span>
+          </div>
+
+          <div class="float-card two">
+            <strong>アプリ + Web</strong>
+            <span>気軽に始めて、じっくり続ける</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="container">
+        <div class="section-label">Apps</div>
+        <h2>提供中のアプリ・Webパズル</h2>
+        <p class="section-intro">
+          ひとつひとつのパズル体験を、分かりやすく、快適に。
+          HamameApp の代表的なタイトルをまとめています。
+        </p>
+
+        <div class="apps-grid">
+          <article class="card app-card">
+            <div class="app-head">
+              <div class="app-icon blue">数</div>
+              <div>
+                <h3 class="app-title">ナンプレ先生</h3>
+                <p class="app-sub">iPhoneアプリ / Web版数独</p>
+              </div>
+            </div>
+            <p>
+              スキャン取り込みやヒント表示、「次の一手」解説などを備えた、
+              学びながら楽しめる数独アプリです。
+            </p>
+            <div class="tag-row">
+              <span class="tag">盤面スキャン</span>
+              <span class="tag">詳細ヒント</span>
+              <span class="tag">オフライン対応</span>
+            </div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="./sudoku/">Web版を遊ぶ</a>
+              <a class="mini-button" href="./apps.html">アプリ紹介</a>
+            </div>
+          </article>
+
+          <article class="card app-card">
+            <div class="app-head">
+              <div class="app-icon purple">合</div>
+              <div>
+                <h3 class="app-title">合体ナンプレ</h3>
+                <p class="app-sub">Webアプリ</p>
+              </div>
+            </div>
+            <p>
+              直感的な操作感と手軽さを重視した数独系パズルです。
+              無料でも快適に遊べる、軽やかなWeb体験を目指しています。
+            </p>
+            <div class="tag-row">
+              <span class="tag">候補メモ</span>
+              <span class="tag">自動チェック</span>
+              <span class="tag">ブラウザ対応</span>
+            </div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="https://game.hamameapp.xyz/">遊んでみる</a>
+              <a class="mini-button" href="./guide-nanpure.html">遊び方ガイド</a>
+            </div>
+          </article>
+
+          <article class="card app-card">
+            <div class="app-head">
+              <div class="app-icon green">骨</div>
+              <div>
+                <h3 class="app-title">ナンバースケルトン</h3>
+                <p class="app-sub">iPhoneアプリ</p>
+              </div>
+            </div>
+            <p>
+              数字の配置ルールを手がかりに、空白のマスを埋めて完成させるロジック系パズルです。
+              短時間でも集中して楽しめる設計です。
+            </p>
+            <div class="tag-row">
+              <span class="tag">ライト〜ハード</span>
+              <span class="tag">途中保存</span>
+              <span class="tag">やり直し対応</span>
+            </div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="./apps.html">アプリ紹介へ</a>
+              <a class="mini-button" href="./support.html">サポート</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-label">Why HamameApp</div>
+        <h2>小さくても、きちんと作る。</h2>
+        <p class="section-intro">
+          HamameApp は、派手さよりも、日々の使いやすさと心地よさを大切にしています。
+          遊び始めやすく、長く使いやすい設計を目指しています。
+        </p>
+
+        <div class="features-wrap">
+          <div class="feature-list">
+            <article class="feature-item">
+              <div class="num">01</div>
+              <h3>シンプルで分かりやすいUI</h3>
+              <p>
+                はじめてでも迷いにくく、何度も触りたくなる操作感を重視。
+                余計な複雑さを減らし、遊ぶことに集中できる体験を目指します。
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <div class="num">02</div>
+              <h3>快適な動作と見やすさ</h3>
+              <p>
+                読みやすい画面設計、軽快な操作、落ち着いた見た目で、
+                短時間でも長時間でも心地よく使えることを大切にしています。
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <div class="num">03</div>
+              <h3>ユーザーの声を反映</h3>
+              <p>
+                使いにくさや改善点を拾いながら、少しずつアップデート。
+                使うほど整っていくプロダクトを目指しています。
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <div class="num">04</div>
+              <h3>プライバシーに配慮</h3>
+              <p>
+                必要な情報だけを扱い、安心して利用できる運営を心がけています。
+                サイト・アプリの案内情報も分かりやすく整理しています。
+              </p>
+            </article>
+          </div>
+
+          <aside class="feature-panel">
+            <h3>公式サイトとして、必要な情報をきれいに整理。</h3>
+            <p>
+              アプリ紹介、Web版、サポート、プライバシーポリシー、利用規約など、
+              迷わずたどれる導線にまとめています。
+            </p>
+
+            <div class="stats">
+              <div class="stat-box">
+                <div class="stat-label">Main Contents</div>
+                <div class="stat-value">Apps / Web / Support</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Design Policy</div>
+                <div class="stat-value">Simple / Clear / Comfortable</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Support</div>
+                <div class="stat-value">メールで受付</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Official Pages</div>
+                <div class="stat-value">Privacy / Terms / About</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="support-box">
+          <div>
+            <h3>お問い合わせ・サポート</h3>
+            <p>
+              ご意見・ご要望・不具合報告は、メールまたはサポートページからご連絡ください。
+              公式情報や各種ポリシーもあわせてご確認いただけます。
+            </p>
+          </div>
+
+          <div class="support-actions">
+            <a class="button primary" href="./support.html">サポートページ</a>
+            <a class="button secondary" href="mailto:hamameapp@gmail.com">メールする</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <hr aria-hidden="true">
-  <nav aria-label="サイト内リンク">
-    <p>
-            <a href="/privacy.html">プライバシーポリシー</a> ｜ 
-      <a href="/support.html">お問い合わせ・サポート</a> ｜ 
-      <a href="/about.html">運営者情報</a> ｜ 
-      <a href="/sudoku/">ナンプレ先生（Web版数独）</a> ｜ 
-      <a href="https://game.hamameapp.xyz">合体ナンプレ（Web版数独）</a> ｜ 
-      <a href="/apps.html">アプリ紹介</a> ｜
-      <a href="/guide-nanpure.html">遊び方ガイド</a> ｜ 
-      <a href="/terms.html">利用規約</a>
-    </p>
-  </nav>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-card">
+        <div class="footer-top">
+          <div>
+            <p class="footer-title">HamameApp</p>
+            <p class="footer-copy">
+              数独・ロジックパズルを中心に、気持ちよく遊べる体験を届ける公式サイト。
+            </p>
+          </div>
 
-  <footer>
-    <p>&copy; HamameApp</p>
+          <div class="footer-links">
+            <a href="./">トップ</a>
+            <a href="./apps.html">アプリ紹介</a>
+            <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
+            <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
+            <a href="./guide-nanpure.html">遊び方ガイド</a>
+            <a href="./support.html">お問い合わせ・サポート</a>
+            <a href="./privacy.html">プライバシーポリシー</a>
+            <a href="./terms.html">利用規約</a>
+            <a href="./about.html">運営者情報</a>
+          </div>
+        </div>
+
+        <div class="copyright">© HamameApp</div>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
