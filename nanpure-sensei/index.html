@@ -401,7 +401,7 @@
     .step h3 { margin: 18px 0 8px; font-size: 23px; line-height: 1.28; letter-spacing: -.04em; }
     .step p { margin: 0 0 18px; color: var(--muted); font-weight: 650; font-size: 14px; }
     .mock-shot {
-      width: min(100%, 300px);
+      width: min(100%, 260px);
       aspect-ratio: 9 / 19.45;
       margin: 0 auto;
       border-radius: 22px;
@@ -415,8 +415,9 @@
     .mock-shot img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top center;
+      background: #fff;
     }
 
     .features { grid-template-columns: repeat(2, 1fr); }
@@ -476,6 +477,12 @@
     }
     .compare h2 { color: #fff; margin-top: 0; }
     .compare p { color: rgba(255,255,255,.72); font-weight: 650; }
+    .compare .section-label {
+      color: #ffd76a;
+      background: rgba(255, 189, 36, .16);
+      border: 1px solid rgba(255, 189, 36, .56);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+    }
     .check-list { display: grid; gap: 12px; }
     .check-item {
       display: flex;
@@ -618,7 +625,7 @@
         <div class="floating-card lesson">ヒント解説<small>次の一手がわかる</small></div>
         <div class="phone">
           <div class="phone-screen">
-            <img src="assets/main.png" alt="ナンプレ先生のヒント解説画面。数独盤面とヒント文が表示されているスクリーンショット" width="832" height="1792">
+            <img src="assets/main.png" alt="ナンプレ先生のヒント解説画面。次の一手と理由が表示されているスクリーンショット" width="832" height="1792">
           </div>
         </div>
       </div>
@@ -653,7 +660,7 @@
       <div class="section-head">
         <span class="section-label">3ステップ</span>
         <h2 id="howto-title">撮る。確認する。解き方がわかる。</h2>
-        <p>あとで各画面の画像に差し替えできます。</p>
+        <p>実際の画面で、読み取りから解き方までの流れを紹介します。</p>
       </div>
       <div class="steps-wrap">
         <div class="steps">
@@ -661,19 +668,19 @@
             <div class="step-number">1</div>
             <h3>紙のナンプレを撮影</h3>
             <p>雑誌や新聞の問題をカメラで撮影。写真フォルダの画像からも読み込めます。</p>
-            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生の撮影画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+            <div class="mock-shot"><img src="assets/step-01-scan.png" alt="ナンプレ先生で紙のナンプレを撮影する画面" loading="lazy" width="832" height="1792"></div>
           </article>
           <article class="step">
             <div class="step-number">2</div>
             <h3>読み取り結果を確認</h3>
             <p>読み取った数字を確認して、必要なところだけサッと修正できます。</p>
-            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生の盤面確認画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+            <div class="mock-shot"><img src="assets/step-02-check.png" alt="ナンプレ先生の読み取り結果を確認する画面" loading="lazy" width="832" height="1792"></div>
           </article>
           <article class="step">
             <div class="step-number">3</div>
             <h3>ヒントと解説で学ぶ</h3>
             <p>詰まったときは次の一手を表示。理由を見ながら、解き方を身につけられます。</p>
-            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生のヒント解説画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+            <div class="mock-shot"><img src="assets/step-03-hint.png" alt="ナンプレ先生のヒントと解説で学ぶ画面" loading="lazy" width="832" height="1792"></div>
           </article>
         </div>
       </div>
