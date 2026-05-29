@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ</title>
-  <meta name="description" content="ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiPhoneアプリです。詰まったときは次の一手と解き方をやさしく解説します。">
-  <meta name="keywords" content="ナンプレ,数独,ナンプレアプリ,数独アプリ,ナンプレ スキャン,数独 スキャン,ナンプレ 写真 読み取り,数独 写真 読み取り,ナンプレ 解き方,数独 解説,ナンプレ ヒント,iPhoneアプリ">
+  <meta name="description" content="ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは次の一手と解き方をやさしく解説します。">
+  <meta name="keywords" content="ナンプレ,数独,ナンプレアプリ,数独アプリ,ナンプレ スキャン,数独 スキャン,ナンプレ 写真 読み取り,数独 写真 読み取り,ナンプレ 解き方,数独 解説,ナンプレ ヒント,スマホアプリ">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#ffcc46">
   <link rel="canonical" href="https://hamameapp.xyz/nanpure-sensei/">
@@ -194,23 +194,74 @@
       align-items: center;
       gap: 14px;
     }
-    .app-store-badge {
+    .app-store-badge, .google-play-badge {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      min-height: 58px;
-      padding: 10px 22px 10px 16px;
+      min-height: 64px;
+      padding: 10px 18px;
       color: #fff;
-      background: #10131a;
-      border-radius: 16px;
-      box-shadow: 0 20px 44px rgba(16, 19, 26, .24);
+      background: #000;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      box-shadow: 0 10px 24px rgba(16, 19, 26, .18);
       transition: transform .18s ease, box-shadow .18s ease;
     }
-    .app-store-badge:hover { transform: translateY(-2px); box-shadow: 0 24px 54px rgba(16,19,26,.30); }
-    .apple-symbol { font-size: 28px; line-height: 1; }
-    .badge-copy { line-height: 1.1; }
-    .badge-copy small { display: block; font-size: 10px; letter-spacing: .04em; opacity: .85; margin-bottom: 3px; }
-    .badge-copy strong { display: block; font-size: 20px; letter-spacing: -.02em; }
+    .app-store-badge:hover, .google-play-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(16,19,26,.24);
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .store-buttons > a {
+      min-width: 238px;
+      justify-content: flex-start;
+    }
+    .play-symbol {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #00d95f 0 50%, transparent 50%);
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 18% 76%, 53% 50%, 18% 24%);
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+    .play-symbol::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 18% 76%, 53% 50%, 18% 24%);
+      background:
+        linear-gradient(45deg, #00d95f 0 28%, #00a1ff 28% 52%, #ffd400 52% 74%, #ff4747 74% 100%);
+    }
+    .apple-symbol {
+      font-size: 32px;
+      line-height: 1;
+      width: 28px;
+      text-align: center;
+      flex: 0 0 auto;
+    }
+    .badge-copy {
+      line-height: 1.02;
+    }
+    .badge-copy small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .01em;
+      opacity: .96;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    .badge-copy strong {
+      display: block;
+      font-size: 20px;
+      letter-spacing: -.03em;
+      font-weight: 850;
+    }
     .sub-link {
       color: var(--muted);
       font-size: 14px;
@@ -573,7 +624,7 @@
       .floating-card.camera { right: 0; top: 88px; }
       .floating-card.lesson { left: 0; bottom: 88px; }
       .cta-row { align-items: stretch; }
-      .app-store-badge { width: 100%; justify-content: center; }
+      .app-store-badge, .google-play-badge { width: 100%; justify-content: flex-start; }
     }
   </style>
 </head>
@@ -588,7 +639,7 @@
         <a href="#howto">使い方</a>
         <a href="#features">できること</a>
         <a href="#faq">FAQ</a>
-        <a class="mini-cta" href="https://apps.apple.com/jp/app/id6755796331">無料ダウンロード</a>
+        <a class="mini-cta" href="#download">無料ダウンロード</a>
       </nav>
     </div>
   </header>
@@ -601,12 +652,18 @@
           <img class="app-icon" src="assets/icon.png" alt="ナンプレ先生アプリアイコン" width="1024" height="1024">
           <h1><span class="nowrap">紙のナンプレをスキャン。</span><br><span class="marker">解き方までわかる。</span></h1>
         </div>
-        <p class="lead">ナンプレ先生は、紙のナンプレ・数独をカメラで読み取り、スマホで解けるiPhoneアプリです。詰まったときは「次の一手」と理由をやさしく解説します。</p>
-        <div class="cta-row">
-          <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
-            <span class="apple-symbol"></span>
-            <span class="badge-copy"><small>Download on the</small><strong>App Store</strong></span>
-          </a>
+        <p class="lead">ナンプレ先生は、紙のナンプレ・数独をカメラで読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは「次の一手」と理由をやさしく解説します。</p>
+        <div class="cta-row" id="download">
+          <div class="store-buttons">
+            <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+              <span class="apple-symbol"></span>
+              <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
+            </a>
+            <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
+              <span class="play-symbol" aria-hidden="true"></span>
+              <span class="badge-copy"><strong>Google Play</strong><small>で手に入れよう</small></span>
+            </a>
+          </div>
           <a class="sub-link" href="#howto">使い方を見る</a>
         </div>
         <p class="note">無料ダウンロード。広告を含みます。ログインなしで始められます。</p>
@@ -750,10 +807,16 @@
           <p>撮影して、解いて、学べる。ナンプレ先生をApp Storeでダウンロード。</p>
         </div>
         <div>
-          <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
-            <span class="apple-symbol"></span>
-            <span class="badge-copy"><small>Download on the</small><strong>App Store</strong></span>
-          </a>
+          <div class="store-buttons">
+            <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+              <span class="apple-symbol"></span>
+              <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
+            </a>
+            <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
+              <span class="play-symbol" aria-hidden="true"></span>
+              <span class="badge-copy"><strong>Google Play</strong><small>で手に入れよう</small></span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -776,12 +839,16 @@
     "@type": "SoftwareApplication",
     "name": "ナンプレ先生",
     "alternateName": ["数独先生", "Sudoku Teacher"],
-    "operatingSystem": "iOS",
+    "operatingSystem": "iOS, Android",
     "applicationCategory": "GameApplication",
     "applicationSubCategory": "Puzzle game",
-    "description": "ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiPhoneアプリです。詰まったときは次の一手と解き方をやさしく解説します。",
+    "description": "ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは次の一手と解き方をやさしく解説します。",
     "url": "https://hamameapp.xyz/nanpure-sensei/",
     "downloadUrl": "https://apps.apple.com/jp/app/id6755796331",
+      "sameAs": [
+        "https://apps.apple.com/jp/app/id6755796331",
+        "https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja"
+      ],
       "image": "https://hamameapp.xyz/nanpure-sensei/assets/icon.png",
     "image": "https://hamameapp.xyz/nanpure-sensei/assets/ogp.png",
     "publisher": {
