@@ -451,6 +451,42 @@
       background: linear-gradient(135deg, #059669, #14b8a6);
     }
 
+    .app-icon.image {
+      background: transparent;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .app-icon.image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .app-card.featured {
+      border-color: rgba(37, 99, 235, 0.16);
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 34%),
+        rgba(255, 255, 255, 0.86);
+    }
+
+    .featured-label {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 6px 11px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+
     .app-title {
       margin: 0;
       font-size: 1.16rem;
@@ -814,6 +850,7 @@
       <nav class="nav" aria-label="グローバルナビゲーション">
         <a href="#apps">アプリ</a>
         <a href="#features">特長</a>
+        <a href="./nanpure-sensei/">ナンプレ先生</a>
         <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
         <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
         <a href="./about.html">運営者情報</a>
@@ -840,6 +877,7 @@
 
           <div class="hero-actions">
             <a class="button primary" href="./apps.html">アプリを見る</a>
+            <a class="button secondary" href="./nanpure-sensei/">ナンプレ先生 iPhone版</a>
             <a class="button secondary" href="./sudoku/">ナンプレ先生を試す</a>
             <a class="button secondary" href="https://game.hamameapp.xyz/">合体ナンプレを遊ぶ</a>
           </div>
@@ -901,9 +939,12 @@
         </p>
 
         <div class="apps-grid">
-          <article class="card app-card">
+          <article class="card app-card featured">
+            <div class="featured-label">iPhoneアプリ</div>
             <div class="app-head">
-              <div class="app-icon blue">数</div>
+              <div class="app-icon image">
+                <img src="https://hamameapp.xyz/nanpure-sensei/assets/icon.png" alt="ナンプレ先生アイコン" width="1024" height="1024" />
+              </div>
               <div>
                 <h3 class="app-title">ナンプレ先生</h3>
                 <p class="app-sub">iPhoneアプリ / Web版数独</p>
@@ -919,7 +960,8 @@
               <span class="tag">オフライン対応</span>
             </div>
             <div class="card-actions">
-              <a class="mini-button primary" href="./sudoku/">Web版を遊ぶ</a>
+              <a class="mini-button primary" href="./nanpure-sensei/">iPhone版を見る</a>
+              <a class="mini-button" href="./sudoku/">Web版を遊ぶ</a>
               <a class="mini-button" href="./apps.html">アプリ紹介</a>
             </div>
           </article>
@@ -1022,10 +1064,10 @@
           </div>
 
           <aside class="feature-panel">
-            <h3>公式サイトとして、必要な情報をきれいに整理。</h3>
+            <h3>遊びたいパズルに、すぐたどり着けます。</h3>
             <p>
-              アプリ紹介、Web版、サポート、プライバシーポリシー、利用規約など、
-              迷わずたどれる導線にまとめています。
+              アプリ紹介、Web版パズル、サポート情報をわかりやすく掲載。
+              気になるタイトルを見つけて、すぐに遊び始められます。
             </p>
 
             <div class="stats">
@@ -1085,7 +1127,8 @@
           <div class="footer-links">
             <a href="./">トップ</a>
             <a href="./apps.html">アプリ紹介</a>
-            <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
+            <a href="./nanpure-sensei/">ナンプレ先生</a>
+        <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
             <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
             <a href="./guide-nanpure.html">遊び方ガイド</a>
             <a href="./support.html">お問い合わせ・サポート</a>
