@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ</title>
+  <meta name="description" content="ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiPhoneアプリです。詰まったときは次の一手と解き方をやさしく解説します。">
+  <meta name="keywords" content="ナンプレ,数独,ナンプレアプリ,数独アプリ,ナンプレ スキャン,数独 スキャン,ナンプレ 写真 読み取り,数独 写真 読み取り,ナンプレ 解き方,数独 解説,ナンプレ ヒント,iPhoneアプリ">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#ffcc46">
+  <link rel="canonical" href="https://hamameapp.xyz/nanpure-sensei/">
+
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HamameApp">
+  <meta property="og:title" content="ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ">
+  <meta property="og:description" content="雑誌や新聞のナンプレを撮影して読み取り。詰まったら次の一手と解き方をやさしく解説します。">
+  <meta property="og:url" content="https://hamameapp.xyz/nanpure-sensei/">
+  <meta property="og:image" content="https://hamameapp.xyz/nanpure-sensei/assets/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ナンプレ先生のアプリ画面">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ">
+  <meta name="twitter:description" content="紙のナンプレを撮影してスマホで解ける。次の一手と解き方もわかる数独アプリ。">
+  <meta name="twitter:image" content="https://hamameapp.xyz/nanpure-sensei/assets/ogp.png">
+
+  <link rel="preload" as="image" href="assets/main.png">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+
+  <style>
+    :root {
+      --bg: #fffaf0;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #687083;
+      --brand: #ffbd24;
+      --brand-dark: #815300;
+      --accent: #007aff;
+      --blue-soft: #eaf2ff;
+      --orange: #ff7a59;
+      --line: rgba(23, 32, 51, .11);
+      --shadow: 0 24px 80px rgba(38, 31, 16, .16);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Meiryo, sans-serif;
+      line-height: 1.75;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(255, 204, 70, .55), transparent 28%),
+        radial-gradient(circle at 88% 4%, rgba(0, 122, 255, .18), transparent 28%),
+        radial-gradient(circle at 86% 74%, rgba(255, 122, 89, .18), transparent 28%),
+        var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 250, 240, .84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(23, 32, 51, .08);
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 18px 38px rgba(23, 32, 51, .22);
+      border: 1px solid rgba(255,255,255,.72);
+      flex: 0 0 auto;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(255, 122, 89, .28);
+    }
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .hero-title-row h1 { margin-top: 0; }
+    .cta-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 23px;
+      object-fit: cover;
+      box-shadow: 0 16px 34px rgba(23,32,51,.20);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--orange));
+      box-shadow: 0 12px 28px rgba(255, 189, 36, .35);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .nav a:hover { color: var(--ink); }
+    .mini-cta {
+      color: #111827 !important;
+      background: var(--brand);
+      padding: 9px 15px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(255, 189, 36, .28);
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 70px 22px 44px;
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 46px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 189, 36, .48);
+      background: rgba(255, 255, 255, .72);
+      color: var(--brand-dark);
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(38, 31, 16, .08);
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -.065em;
+      font-weight: 950;
+    }
+    .marker {
+      background: linear-gradient(transparent 62%, rgba(255, 205, 70, .8) 62%);
+      padding: 0 .04em;
+    }
+    .nowrap { white-space: nowrap; }
+    .lead {
+      margin: 0;
+      max-width: 680px;
+      color: #3d4658;
+      font-size: clamp(17px, 2.1vw, 21px);
+      font-weight: 650;
+    }
+    .cta-row {
+      margin: 28px 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+    .app-store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 10px 22px 10px 16px;
+      color: #fff;
+      background: #10131a;
+      border-radius: 16px;
+      box-shadow: 0 20px 44px rgba(16, 19, 26, .24);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .app-store-badge:hover { transform: translateY(-2px); box-shadow: 0 24px 54px rgba(16,19,26,.30); }
+    .apple-symbol { font-size: 28px; line-height: 1; }
+    .badge-copy { line-height: 1.1; }
+    .badge-copy small { display: block; font-size: 10px; letter-spacing: .04em; opacity: .85; margin-bottom: 3px; }
+    .badge-copy strong { display: block; font-size: 20px; letter-spacing: -.02em; }
+    .sub-link {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .note { margin: 0; color: var(--muted); font-size: 13px; }
+    .hero-points {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-points span {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      color: #30384b;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .phone-stage {
+      position: relative;
+      min-height: 620px;
+      display: grid;
+      place-items: center;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    .blob.one { width: 290px; height: 290px; right: 10px; top: 34px; background: rgba(255, 189, 36, .46); }
+    .blob.two { width: 230px; height: 230px; left: 12px; bottom: 62px; background: rgba(0, 122, 255, .16); }
+    .phone {
+      position: relative;
+      z-index: 2;
+      width: min(330px, 74vw);
+      aspect-ratio: 9 / 19.45;
+      padding: 13px;
+      border-radius: 46px;
+      background: #10131a;
+      box-shadow: 0 34px 90px rgba(23, 32, 51, .36);
+      transform: rotate(-3.5deg);
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 98px;
+      height: 26px;
+      border-radius: 999px;
+      background: #10131a;
+      z-index: 4;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .floating-card {
+      position: absolute;
+      z-index: 5;
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(23,32,51,.10);
+      box-shadow: 0 18px 44px rgba(23,32,51,.18);
+      backdrop-filter: blur(18px);
+      font-weight: 900;
+      color: #202638;
+    }
+    .floating-card small { display: block; color: var(--muted); font-size: 12px; font-weight: 750; margin-top: 3px; }
+    .floating-card.camera { right: 0; top: 116px; transform: rotate(5deg); }
+    .floating-card.lesson { left: 0; bottom: 122px; transform: rotate(-4deg); }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 70px 22px;
+    }
+    .section-head {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+    .section-label {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: rgba(255, 205, 70, .30);
+      border: 1px solid rgba(255, 189, 36, .42);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .10em;
+    }
+    .section h2 {
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -.05em;
+      font-weight: 950;
+    }
+    .section-head p { margin: 0; color: var(--muted); font-size: 16px; font-weight: 650; }
+
+    .problems, .features, .screenshots, .steps {
+      display: grid;
+      gap: 18px;
+    }
+    .problems { grid-template-columns: repeat(3, 1fr); }
+    .problem-card, .feature, .shot-card, .step {
+      background: rgba(255,255,255,.80);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 44px rgba(23,32,51,.08);
+    }
+    .problem-card {
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff0bd;
+      font-size: 24px;
+    }
+    .problem-card h3, .feature h3, .shot-card h3 { margin: 0 0 8px; line-height: 1.38; letter-spacing: -.03em; }
+    .problem-card h3 { font-size: 20px; }
+    .problem-card p, .feature p, .shot-card p { margin: 0; color: var(--muted); font-weight: 650; font-size: 14px; }
+
+    .steps-wrap {
+      padding: 26px;
+      border-radius: 32px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step {
+      padding: 22px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #fff, #fff9ea);
+      overflow: hidden;
+      position: relative;
+    }
+    .step::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 999px;
+      background: rgba(255,189,36,.24);
+    }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #10131a;
+      color: #fff;
+      font-weight: 950;
+      position: relative;
+      z-index: 2;
+    }
+    .step h3 { margin: 18px 0 8px; font-size: 23px; line-height: 1.28; letter-spacing: -.04em; }
+    .step p { margin: 0 0 18px; color: var(--muted); font-weight: 650; font-size: 14px; }
+    .mock-shot {
+      width: min(100%, 300px);
+      aspect-ratio: 9 / 19.45;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(23,32,51,.12);
+      background: #fff;
+      position: relative;
+      z-index: 2;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+    }
+    .mock-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 24px;
+      border-radius: 24px;
+    }
+    .feature-mark {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      color: var(--accent);
+      font-weight: 950;
+    }
+    .feature h3 { font-size: 19px; margin-bottom: 4px; }
+
+    .screenshots { grid-template-columns: repeat(3, 1fr); }
+    .shot-card {
+      border-radius: 30px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 20px 54px rgba(23,32,51,.12);
+    }
+    .shot-frame {
+      aspect-ratio: 9 / 16.4;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(23,32,51,.10);
+      background: #f6f7fb;
+    }
+    .shot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .shot-card h3 { margin: 14px 8px 4px; font-size: 18px; }
+    .shot-card p { margin: 0 8px 8px; font-size: 13px; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 32px;
+      color: #fff;
+      background: #10131a;
+      box-shadow: 0 28px 80px rgba(16,19,26,.25);
+    }
+    .compare h2 { color: #fff; margin-top: 0; }
+    .compare p { color: rgba(255,255,255,.72); font-weight: 650; }
+    .check-list { display: grid; gap: 12px; }
+    .check-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 850;
+    }
+    .check-item span { color: var(--brand); }
+
+    .faq { display: grid; gap: 12px; max-width: 860px; margin: 0 auto; }
+    details {
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(23,32,51,.06);
+      overflow: hidden;
+    }
+    summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin: 0; padding: 0 20px 20px; color: var(--muted); font-weight: 650; }
+
+    .final-cta {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 22px 76px;
+    }
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+      padding: 34px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #ffcf48, #ff9a6c);
+      box-shadow: 0 24px 72px rgba(255, 154, 108, .30);
+    }
+    .cta-box h2 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 42px); line-height: 1.18; letter-spacing: -.05em; }
+    .cta-box p { margin: 0; color: rgba(23,32,51,.78); font-weight: 750; }
+
+    .site-footer {
+      border-top: 1px solid rgba(23,32,51,.08);
+      background: rgba(255,255,255,.45);
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: underline; text-underline-offset: 4px; }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 20px; }
+      .phone-stage { min-height: 560px; }
+      .problems, .steps { grid-template-columns: 1fr; }
+      .features, .compare { grid-template-columns: 1fr; }
+      .mock-shot { width: min(100%, 280px); }
+      .shot-frame { max-height: 560px; }
+      .cta-box, .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .nav a:not(.mini-cta) { display: none; }
+      .header-inner { padding: 12px 16px; }
+      .hero, .section, .final-cta { padding-left: 16px; padding-right: 16px; }
+      .hero { padding-top: 38px; }
+      h1 { font-size: 29px; line-height: 1.16; letter-spacing: -.05em; }
+      .hero-title-row { gap: 12px; align-items: flex-start; }
+      .app-icon { width: 54px; height: 54px; border-radius: 17px; margin-top: 2px; }
+      .lead { font-size: 16px; }
+      .steps-wrap { padding: 14px; border-radius: 26px; }
+      .phone { width: min(300px, 82vw); border-radius: 42px; }
+      .floating-card { font-size: 13px; padding: 12px 14px; }
+      .floating-card.camera { right: 0; top: 88px; }
+      .floating-card.lesson { left: 0; bottom: 88px; }
+      .cta-row { align-items: stretch; }
+      .app-store-badge { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="https://hamameapp.xyz/" aria-label="HamameAppトップへ">
+        <img class="logo-icon" src="assets/icon.png" alt="ナンプレ先生アイコン" width="1024" height="1024">
+        <span>ナンプレ先生</span>
+      </a>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#howto">使い方</a>
+        <a href="#features">できること</a>
+        <a href="#faq">FAQ</a>
+        <a class="mini-cta" href="https://apps.apple.com/jp/app/id6755796331">無料ダウンロード</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">📷 雑誌・新聞のナンプレに対応</div>
+        <div class="hero-title-row">
+          <img class="app-icon" src="assets/icon.png" alt="ナンプレ先生アプリアイコン" width="1024" height="1024">
+          <h1><span class="nowrap">紙のナンプレをスキャン。</span><br><span class="marker">解き方までわかる。</span></h1>
+        </div>
+        <p class="lead">ナンプレ先生は、紙のナンプレ・数独をカメラで読み取り、スマホで解けるiPhoneアプリです。詰まったときは「次の一手」と理由をやさしく解説します。</p>
+        <div class="cta-row">
+          <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+            <span class="apple-symbol"></span>
+            <span class="badge-copy"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="sub-link" href="#howto">使い方を見る</a>
+        </div>
+        <p class="note">無料ダウンロード。広告を含みます。ログインなしで始められます。</p>
+        <div class="hero-points" aria-label="主な特徴">
+          <span>✓ 紙の問題を撮影</span>
+          <span>✓ 写真から読み込み</span>
+          <span>✓ 次の一手を表示</span>
+          <span>✓ 解き方を解説</span>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-label="ナンプレ先生のアプリ画面イメージ">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="floating-card camera">カメラで読み取り<small>紙のナンプレをスマホへ</small></div>
+        <div class="floating-card lesson">ヒント解説<small>次の一手がわかる</small></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="assets/main.png" alt="ナンプレ先生のヒント解説画面。数独盤面とヒント文が表示されているスクリーンショット" width="832" height="1792">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="problem-title">
+      <div class="section-head">
+        <span class="section-label">こんな経験ありませんか？</span>
+        <h2 id="problem-title">紙のナンプレで止まった時間を、もう一度楽しく。</h2>
+        <p>雑誌や新聞の問題をそのまま活かして、スマホで続きから考えられます。</p>
+      </div>
+      <div class="problems">
+        <article class="problem-card">
+          <div class="icon">📖</div>
+          <h3>雑誌の問題を、スマホでも解きたい</h3>
+          <p>カメラで撮影して盤面を取り込み。紙の問題をデジタルで扱いやすくします。</p>
+        </article>
+        <article class="problem-card">
+          <div class="icon">🤔</div>
+          <h3>途中で詰まって、先に進めない</h3>
+          <p>次に見るべきマスを確認できるので、悩みすぎずに再開できます。</p>
+        </article>
+        <article class="problem-card">
+          <div class="icon">🎓</div>
+          <h3>答えよりも、解き方を知りたい</h3>
+          <p>数字を埋めるだけではなく、なぜそこに入るのかを学べます。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="howto" aria-labelledby="howto-title">
+      <div class="section-head">
+        <span class="section-label">3ステップ</span>
+        <h2 id="howto-title">撮る。確認する。解き方がわかる。</h2>
+        <p>あとで各画面の画像に差し替えできます。</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>紙のナンプレを撮影</h3>
+            <p>雑誌や新聞の問題をカメラで撮影。写真フォルダの画像からも読み込めます。</p>
+            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生の撮影画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>読み取り結果を確認</h3>
+            <p>読み取った数字を確認して、必要なところだけサッと修正できます。</p>
+            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生の盤面確認画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>ヒントと解説で学ぶ</h3>
+            <p>詰まったときは次の一手を表示。理由を見ながら、解き方を身につけられます。</p>
+            <div class="mock-shot"><img src="assets/main.png" alt="ナンプレ先生のヒント解説画面ダミー画像" loading="lazy" width="832" height="1792"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <span class="section-label">できること</span>
+        <h2 id="features-title">紙派にも、アプリ派にも使いやすく。</h2>
+        <p>ナンプレをただ解くためだけでなく、考え方を覚えるための機能をまとめました。</p>
+      </div>
+      <div class="features">
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>カメラで盤面読み取り</h3><p>紙面のナンプレ・数独を撮影して、スマホ上の盤面として扱えます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>写真フォルダから読み込み</h3><p>保存済みの画像やスクリーンショットからも取り込みできます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>次の一手を表示</h3><p>行き詰まったとき、次に考える場所をわかりやすく示します。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>解き方の理由を解説</h3><p>答えだけでなく、候補のしぼり方や考え方を確認できます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>初心者にもやさしい</h3><p>「どこを見ればいいかわからない」という状態からでも始めやすい設計です。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>アプリ内の問題でも遊べる</h3><p>手元の問題だけでなく、アプリ内の問題でもナンプレを楽しめます。</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="compare-title">
+      <div class="compare">
+        <div>
+          <span class="section-label">ナンプレ先生の強み</span>
+          <h2 id="compare-title">ただの自動解答アプリではありません。</h2>
+          <p>答えを出して終わりではなく、「なぜその数字になるのか」を確認できるので、次の問題にも活かせます。</p>
+        </div>
+        <div class="check-list">
+          <div class="check-item"><span>✓</span>紙のナンプレ・数独をアプリに取り込める</div>
+          <div class="check-item"><span>✓</span>途中で詰まっても、次の一手がわかる</div>
+          <div class="check-item"><span>✓</span>解き方を覚えながらナンプレを楽しめる</div>
+          <div class="check-item"><span>✓</span>初心者の練習にも、難問の確認にも使える</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 id="faq-title">よくある質問</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>無料で使えますか？</summary>
+          <p>無料でダウンロードできます。アプリ内に広告が表示される場合があります。</p>
+        </details>
+        <details>
+          <summary>雑誌や新聞のナンプレも読み取れますか？</summary>
+          <p>紙の問題をカメラで撮影して取り込めます。紙面の状態や撮影環境によって、読み取り後に修正が必要になる場合があります。</p>
+        </details>
+        <details>
+          <summary>写真フォルダの画像からも読み込めますか？</summary>
+          <p>保存済みの画像から盤面を取り込むこともできます。</p>
+        </details>
+        <details>
+          <summary>初心者でも使えますか？</summary>
+          <p>はい。次の一手や解説を見ながら進められるので、ナンプレの考え方を少しずつ覚えたい方にも向いています。</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-label="ダウンロード案内">
+      <div class="cta-box">
+        <div>
+          <h2>紙のナンプレを、もっと気軽に。</h2>
+          <p>撮影して、解いて、学べる。ナンプレ先生をApp Storeでダウンロード。</p>
+        </div>
+        <div>
+          <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+            <span class="apple-symbol"></span>
+            <span class="badge-copy"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© HamameApp. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="https://hamameapp.xyz/">HamameApp</a>
+        <a href="https://hamameapp.xyz/sudokuteacher/support/">サポート</a>
+        <a href="https://hamameapp.xyz/sudokuteacher/privacy/">プライバシーポリシー</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ナンプレ先生",
+    "alternateName": ["数独先生", "Sudoku Teacher"],
+    "operatingSystem": "iOS",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Puzzle game",
+    "description": "ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiPhoneアプリです。詰まったときは次の一手と解き方をやさしく解説します。",
+    "url": "https://hamameapp.xyz/nanpure-sensei/",
+    "downloadUrl": "https://apps.apple.com/jp/app/id6755796331",
+      "image": "https://hamameapp.xyz/nanpure-sensei/assets/icon.png",
+    "image": "https://hamameapp.xyz/nanpure-sensei/assets/ogp.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "HamameApp",
+      "url": "https://hamameapp.xyz/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ナンプレ先生は無料で使えますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "無料でダウンロードできます。アプリ内に広告が表示される場合があります。"}
+      },
+      {
+        "@type": "Question",
+        "name": "雑誌や新聞のナンプレも読み取れますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "紙の問題をカメラで撮影して取り込めます。紙面の状態や撮影環境によって、読み取り後に修正が必要になる場合があります。"}
+      },
+      {
+        "@type": "Question",
+        "name": "写真フォルダの画像からも読み込めますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "保存済みの画像から盤面を取り込むこともできます。"}
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
