@@ -239,11 +239,21 @@
         linear-gradient(45deg, #00d95f 0 28%, #00a1ff 28% 52%, #ffd400 52% 74%, #ff4747 74% 100%);
     }
     .apple-symbol {
-      font-size: 32px;
-      line-height: 1;
-      width: 28px;
-      text-align: center;
+      display: none;
+    }
+    .apple-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      color: #fff;
       flex: 0 0 auto;
+    }
+    .apple-icon svg {
+      width: 30px;
+      height: 30px;
+      display: block;
     }
     .badge-copy {
       line-height: 1.02;
@@ -656,7 +666,11 @@
         <div class="cta-row" id="download">
           <div class="store-buttons">
             <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
-              <span class="apple-symbol"></span>
+              <span class="apple-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <path d="M16.365 12.45c.02 2.152 1.89 2.868 1.91 2.877-.016.05-.299 1.024-.986 2.028-.594.868-1.21 1.732-2.181 1.75-.954.018-1.261-.565-2.353-.565-1.093 0-1.434.547-2.337.583-.938.035-1.653-.938-2.252-1.802-1.223-1.767-2.158-4.992-.902-7.174.624-1.084 1.74-1.77 2.952-1.787.92-.018 1.789.619 2.353.619.564 0 1.624-.766 2.737-.653.466.02 1.776.188 2.616 1.417-.068.042-1.56.91-1.557 2.707zM14.378 5.873c.498-.604.834-1.444.742-2.28-.718.029-1.587.478-2.103 1.082-.462.535-.867 1.389-.757 2.207.8.062 1.62-.407 2.118-1.009z"/>
+                </svg>
+              </span>
               <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
             </a>
             <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
@@ -809,7 +823,11 @@
         <div>
           <div class="store-buttons">
             <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
-              <span class="apple-symbol"></span>
+              <span class="apple-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <path d="M16.365 12.45c.02 2.152 1.89 2.868 1.91 2.877-.016.05-.299 1.024-.986 2.028-.594.868-1.21 1.732-2.181 1.75-.954.018-1.261-.565-2.353-.565-1.093 0-1.434.547-2.337.583-.938.035-1.653-.938-2.252-1.802-1.223-1.767-2.158-4.992-.902-7.174.624-1.084 1.74-1.77 2.952-1.787.92-.018 1.789.619 2.353.619.564 0 1.624-.766 2.737-.653.466.02 1.776.188 2.616 1.417-.068.042-1.56.91-1.557 2.707zM14.378 5.873c.498-.604.834-1.444.742-2.28-.718.029-1.587.478-2.103 1.082-.462.535-.867 1.389-.757 2.207.8.062 1.62-.407 2.118-1.009z"/>
+                </svg>
+              </span>
               <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
             </a>
             <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
