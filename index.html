@@ -1,1112 +1,821 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HamameApp | パズルアプリ公式サイト</title>
-  <meta
-    name="description"
-    content="HamameApp は、数独やロジックパズルを中心に、シンプルで気持ちよく遊べるアプリとWebパズルを提供しています。"
-  />
-  <meta name="theme-color" content="#0f172a" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ</title>
+  <meta name="description" content="ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは次の一手と解き方をやさしく解説します。">
+  <meta name="keywords" content="ナンプレ,数独,ナンプレアプリ,数独アプリ,ナンプレ スキャン,数独 スキャン,ナンプレ 写真 読み取り,数独 写真 読み取り,ナンプレ 解き方,数独 解説,ナンプレ ヒント,スマホアプリ">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#ffcc46">
+  <link rel="canonical" href="https://hamameapp.xyz/nanpure-sensei/">
+
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HamameApp">
+  <meta property="og:title" content="ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ">
+  <meta property="og:description" content="雑誌や新聞のナンプレを撮影して読み取り。詰まったら次の一手と解き方をやさしく解説します。">
+  <meta property="og:url" content="https://hamameapp.xyz/nanpure-sensei/">
+  <meta property="og:image" content="https://hamameapp.xyz/nanpure-sensei/assets/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ナンプレ先生のアプリ画面">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ナンプレ先生｜紙のナンプレをスキャンして解き方までわかる数独アプリ">
+  <meta name="twitter:description" content="紙のナンプレを撮影してスマホで解ける。次の一手と解き方もわかる数独アプリ。">
+  <meta name="twitter:image" content="https://hamameapp.xyz/nanpure-sensei/assets/ogp.png">
+
+  <link rel="preload" as="image" href="assets/main.png">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+
   <style>
     :root {
-      --bg: #f7f9fc;
-      --surface: rgba(255, 255, 255, 0.82);
-      --text: #0f172a;
-      --text-soft: #475569;
-      --line: rgba(15, 23, 42, 0.10);
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #7c3aed;
-      --shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
-      --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --max-width: 1180px;
+      --bg: #fffaf0;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #687083;
+      --brand: #ffbd24;
+      --brand-dark: #815300;
+      --accent: #007aff;
+      --blue-soft: #eaf2ff;
+      --orange: #ff7a59;
+      --line: rgba(23, 32, 51, .11);
+      --shadow: 0 24px 80px rgba(38, 31, 16, .16);
+      --max: 1120px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Hiragino Sans",
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        Meiryo,
-        sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
-        radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent 26%),
-        linear-gradient(180deg, #f9fbff 0%, #f5f8fc 45%, #eef3f9 100%);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Meiryo, sans-serif;
       line-height: 1.75;
-      letter-spacing: 0.01em;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(255, 204, 70, .55), transparent 28%),
+        radial-gradient(circle at 88% 4%, rgba(0, 122, 255, .18), transparent 28%),
+        radial-gradient(circle at 86% 74%, rgba(255, 122, 89, .18), transparent 28%),
+        var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(calc(100% - 32px), var(--max-width));
-      margin: 0 auto;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(247, 249, 252, 0.72);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      z-index: 30;
+      background: rgba(255, 250, 240, .84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(23, 32, 51, .08);
     }
-
     .header-inner {
-      min-height: 76px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 18px;
     }
-
-    .brand {
+    .logo {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      min-width: 0;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -.02em;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      color: #fff;
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 18px 38px rgba(23, 32, 51, .22);
+      border: 1px solid rgba(255,255,255,.72);
+      flex: 0 0 auto;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(255, 122, 89, .28);
+    }
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .hero-title-row h1 { margin-top: 0; }
+    .cta-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 23px;
+      object-fit: cover;
+      box-shadow: 0 16px 34px rgba(23,32,51,.20);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
       display: grid;
       place-items: center;
-      font-size: 18px;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
-      flex-shrink: 0;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--orange));
+      box-shadow: 0 12px 28px rgba(255, 189, 36, .35);
     }
-
-    .brand-name {
-      font-size: 1rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin: 0;
-      letter-spacing: 0.02em;
-    }
-
-    .brand-sub {
-      margin: 2px 0 0;
-      color: var(--text-soft);
-      font-size: 0.84rem;
-      line-height: 1.35;
-    }
-
     .nav {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
     }
-
-    .nav a {
-      padding: 10px 14px;
+    .nav a:hover { color: var(--ink); }
+    .mini-cta {
+      color: #111827 !important;
+      background: var(--brand);
+      padding: 9px 15px;
       border-radius: 999px;
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: 0.25s ease;
-    }
-
-    .nav a:hover {
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary-dark);
-    }
-
-    .nav .nav-cta {
-      background: var(--text);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .nav .nav-cta:hover {
-      background: #0b1223;
-      color: #fff;
+      box-shadow: 0 10px 24px rgba(255, 189, 36, .28);
     }
 
     .hero {
-      padding: 72px 0 48px;
-    }
-
-    .hero-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 70px 22px 44px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 44px;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 46px;
       align-items: center;
     }
-
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 12px;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary-dark);
-      border: 1px solid rgba(37, 99, 235, 0.12);
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.3rem, 4vw, 4.3rem);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-    }
-
-    .hero .lead {
-      margin: 22px 0 0;
-      color: var(--text-soft);
-      font-size: clamp(1.02rem, 1.6vw, 1.16rem);
-      max-width: 620px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: 0.25s ease;
-      border: 1px solid transparent;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .button.primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-    }
-
-    .button.primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.20);
-    }
-
-    .button.secondary {
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text);
-      border-color: rgba(15, 23, 42, 0.08);
-    }
-
-    .button.secondary:hover {
-      background: #fff;
-      transform: translateY(-1px);
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .meta-chip {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid var(--line);
-      color: var(--text-soft);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-    }
-
-    .glow {
-      position: absolute;
-      width: 78%;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.12), transparent 68%);
-      filter: blur(8px);
-    }
-
-    .device-shell {
-      position: relative;
-      width: min(100%, 430px);
-      border-radius: 36px;
-      padding: 14px;
-      background:
-        linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.98));
-      box-shadow:
-        0 28px 80px rgba(15, 23, 42, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    }
-
-    .device-notch {
-      width: 36%;
-      height: 26px;
-      margin: 0 auto 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .device-screen {
-      background:
-        linear-gradient(180deg, #0f172a 0%, #172554 100%);
-      border-radius: 28px;
-      overflow: hidden;
-      padding: 22px;
-      min-height: 460px;
-      color: #fff;
-    }
-
-    .screen-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .screen-title {
-      margin: 18px 0 8px;
-      font-size: 1.55rem;
-      line-height: 1.25;
-      font-weight: 800;
-    }
-
-    .screen-text {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .mini-grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .mini-cell {
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.94);
-    }
-
-    .float-card {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.70);
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
-      border-radius: 18px;
-      padding: 14px 16px;
-    }
-
-    .float-card strong {
-      display: block;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin-bottom: 4px;
-    }
-
-    .float-card span {
-      font-size: 0.82rem;
-      color: var(--text-soft);
-    }
-
-    .float-card.one {
-      top: 8%;
-      right: -5%;
-    }
-
-    .float-card.two {
-      bottom: 10%;
-      left: -6%;
-    }
-
-    .section {
-      padding: 42px 0;
-    }
-
-    .section-label {
-      font-size: 0.84rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section h2 {
-      margin: 0;
-      font-size: clamp(1.85rem, 3vw, 2.8rem);
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-    }
-
-    .section-intro {
-      margin: 14px 0 0;
-      max-width: 720px;
-      color: var(--text-soft);
-      font-size: 1.02rem;
-    }
-
-    .apps-grid {
-      margin-top: 28px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-xl);
-      padding: 24px;
-    }
-
-    .app-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .app-head {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .app-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 1.15rem;
+      border: 1px solid rgba(255, 189, 36, .48);
+      background: rgba(255, 255, 255, .72);
+      color: var(--brand-dark);
+      font-size: 13px;
       font-weight: 900;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
-      flex-shrink: 0;
+      box-shadow: 0 10px 28px rgba(38, 31, 16, .08);
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -.065em;
+      font-weight: 950;
+    }
+    .marker {
+      background: linear-gradient(transparent 62%, rgba(255, 205, 70, .8) 62%);
+      padding: 0 .04em;
+    }
+    .nowrap { white-space: nowrap; }
+    .lead {
+      margin: 0;
+      max-width: 680px;
+      color: #3d4658;
+      font-size: clamp(17px, 2.1vw, 21px);
+      font-weight: 650;
+    }
+    .cta-row {
+      margin: 28px 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+    .app-store-badge, .google-play-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 64px;
+      padding: 10px 18px;
+      color: #fff;
+      background: #000;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      box-shadow: 0 10px 24px rgba(16, 19, 26, .18);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .app-store-badge:hover, .google-play-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(16,19,26,.24);
     }
 
-    .app-icon.blue {
-      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .store-buttons > a {
+      min-width: 238px;
+      justify-content: flex-start;
+    }
+    .play-symbol {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #00d95f 0 50%, transparent 50%);
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 18% 76%, 53% 50%, 18% 24%);
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+    .play-symbol::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 18% 76%, 53% 50%, 18% 24%);
+      background:
+        linear-gradient(45deg, #00d95f 0 28%, #00a1ff 28% 52%, #ffd400 52% 74%, #ff4747 74% 100%);
+    }
+    .apple-symbol {
+      font-size: 32px;
+      line-height: 1;
+      width: 28px;
+      text-align: center;
+      flex: 0 0 auto;
+    }
+    .badge-copy {
+      line-height: 1.02;
+    }
+    .badge-copy small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .01em;
+      opacity: .96;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    .badge-copy strong {
+      display: block;
+      font-size: 20px;
+      letter-spacing: -.03em;
+      font-weight: 850;
+    }
+    .sub-link {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .note { margin: 0; color: var(--muted); font-size: 13px; }
+    .hero-points {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-points span {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      color: #30384b;
+      font-size: 13px;
+      font-weight: 850;
     }
 
-    .app-icon.purple {
-      background: linear-gradient(135deg, #7c3aed, #ec4899);
+    .phone-stage {
+      position: relative;
+      min-height: 620px;
+      display: grid;
+      place-items: center;
     }
-
-    .app-icon.green {
-      background: linear-gradient(135deg, #059669, #14b8a6);
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
     }
-
-    .app-icon.image {
-      background: transparent;
+    .blob.one { width: 290px; height: 290px; right: 10px; top: 34px; background: rgba(255, 189, 36, .46); }
+    .blob.two { width: 230px; height: 230px; left: 12px; bottom: 62px; background: rgba(0, 122, 255, .16); }
+    .phone {
+      position: relative;
+      z-index: 2;
+      width: min(330px, 74vw);
+      aspect-ratio: 9 / 19.45;
+      padding: 13px;
+      border-radius: 46px;
+      background: #10131a;
+      box-shadow: 0 34px 90px rgba(23, 32, 51, .36);
+      transform: rotate(-3.5deg);
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 98px;
+      height: 26px;
+      border-radius: 999px;
+      background: #10131a;
+      z-index: 4;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
       overflow: hidden;
-      padding: 0;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,.15);
     }
-
-    .app-icon.image img {
+    .phone-screen img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      object-position: top center;
     }
-
-    .app-card.featured {
-      border-color: rgba(37, 99, 235, 0.16);
-      background:
-        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 34%),
-        rgba(255, 255, 255, 0.86);
-    }
-
-    .featured-label {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 6px 11px;
-      margin-bottom: 14px;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      font-size: 0.78rem;
+    .floating-card {
+      position: absolute;
+      z-index: 5;
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(23,32,51,.10);
+      box-shadow: 0 18px 44px rgba(23,32,51,.18);
+      backdrop-filter: blur(18px);
       font-weight: 900;
-      letter-spacing: 0.06em;
+      color: #202638;
     }
+    .floating-card small { display: block; color: var(--muted); font-size: 12px; font-weight: 750; margin-top: 3px; }
+    .floating-card.camera { right: 0; top: 116px; transform: rotate(5deg); }
+    .floating-card.lesson { left: 0; bottom: 122px; transform: rotate(-4deg); }
 
-
-    .app-title {
-      margin: 0;
-      font-size: 1.16rem;
-      line-height: 1.35;
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 70px 22px;
     }
-
-    .app-sub {
-      margin: 4px 0 0;
-      color: var(--text-soft);
-      font-size: 0.9rem;
-      line-height: 1.5;
+    .section-head {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      text-align: center;
     }
-
-    .app-card p {
-      margin: 0;
-      color: var(--text-soft);
-      font-size: 0.96rem;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 22px;
-    }
-
-    .tag {
-      padding: 7px 11px;
+    .section-label {
+      display: inline-block;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.05);
-      color: var(--text-soft);
-      font-size: 0.82rem;
-      font-weight: 700;
+      color: var(--brand-dark);
+      background: rgba(255, 205, 70, .30);
+      border: 1px solid rgba(255, 189, 36, .42);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .10em;
     }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: auto;
-      padding-top: 8px;
+    .section h2 {
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -.05em;
+      font-weight: 950;
     }
+    .section-head p { margin: 0; color: var(--muted); font-size: 16px; font-weight: 650; }
 
-    .mini-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      font-weight: 800;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.95);
-      transition: 0.25s ease;
-    }
-
-    .mini-button:hover {
-      transform: translateY(-1px);
-      border-color: rgba(37, 99, 235, 0.18);
-      color: var(--primary-dark);
-    }
-
-    .mini-button.primary {
-      border-color: transparent;
-      background: var(--text);
-      color: #fff;
-    }
-
-    .mini-button.primary:hover {
-      color: #fff;
-      background: #0b1223;
-    }
-
-    .features-wrap {
-      margin-top: 28px;
+    .problems, .features, .screenshots, .steps {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
-
-    .feature-item {
-      padding: 22px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      box-shadow: var(--shadow-soft);
+    .problems { grid-template-columns: repeat(3, 1fr); }
+    .problem-card, .feature, .shot-card, .step {
+      background: rgba(255,255,255,.80);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 44px rgba(23,32,51,.08);
     }
-
-    .feature-item .num {
-      display: inline-grid;
-      place-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: rgba(37, 99, 235, 0.10);
-      color: var(--primary-dark);
-      font-size: 0.88rem;
-      font-weight: 900;
+    .problem-card {
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .icon {
+      width: 48px;
+      height: 48px;
       margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff0bd;
+      font-size: 24px;
     }
+    .problem-card h3, .feature h3, .shot-card h3 { margin: 0 0 8px; line-height: 1.38; letter-spacing: -.03em; }
+    .problem-card h3 { font-size: 20px; }
+    .problem-card p, .feature p, .shot-card p { margin: 0; color: var(--muted); font-weight: 650; font-size: 14px; }
 
-    .feature-item h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-      line-height: 1.35;
-    }
-
-    .feature-item p {
-      margin: 0;
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
-
-    .feature-panel {
-      background:
-        linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
-      color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 28px;
+    .steps-wrap {
+      padding: 26px;
+      border-radius: 32px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
     }
-
-    .feature-panel::before {
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step {
+      padding: 22px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, #fff, #fff9ea);
+      overflow: hidden;
+      position: relative;
+    }
+    .step::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      top: -70px;
-      right: -50px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.30), transparent 65%);
+      right: -30px;
+      top: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 999px;
+      background: rgba(255,189,36,.24);
     }
-
-    .feature-panel h3 {
-      margin: 0 0 10px;
-      font-size: 1.28rem;
-      line-height: 1.35;
-      position: relative;
-      z-index: 1;
-    }
-
-    .feature-panel p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.80);
-      position: relative;
-      z-index: 1;
-    }
-
-    .stats {
+    .step-number {
+      width: 42px;
+      height: 42px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 22px;
+      place-items: center;
+      border-radius: 14px;
+      background: #10131a;
+      color: #fff;
+      font-weight: 950;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+    }
+    .step h3 { margin: 18px 0 8px; font-size: 23px; line-height: 1.28; letter-spacing: -.04em; }
+    .step p { margin: 0 0 18px; color: var(--muted); font-weight: 650; font-size: 14px; }
+    .mock-shot {
+      width: min(100%, 260px);
+      aspect-ratio: 9 / 19.45;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(23,32,51,.12);
+      background: #fff;
+      position: relative;
+      z-index: 2;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+    }
+    .mock-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+      background: #fff;
     }
 
-    .stat-box {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.10);
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 24px;
+      border-radius: 24px;
     }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 1.08rem;
-      font-weight: 800;
-    }
-
-    .support-box {
-      margin-top: 28px;
+    .feature-mark {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 22px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      color: var(--accent);
+      font-weight: 950;
+    }
+    .feature h3 { font-size: 19px; margin-bottom: 4px; }
+
+    .screenshots { grid-template-columns: repeat(3, 1fr); }
+    .shot-card {
+      border-radius: 30px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 20px 54px rgba(23,32,51,.12);
+    }
+    .shot-frame {
+      aspect-ratio: 9 / 16.4;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(23,32,51,.10);
+      background: #f6f7fb;
+    }
+    .shot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .shot-card h3 { margin: 14px 8px 4px; font-size: 18px; }
+    .shot-card p { margin: 0 8px 8px; font-size: 13px; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
       align-items: center;
-      padding: 28px;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.08));
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      border-radius: 28px;
-      box-shadow: var(--shadow-soft);
+      padding: 34px;
+      border-radius: 32px;
+      color: #fff;
+      background: #10131a;
+      box-shadow: 0 28px 80px rgba(16,19,26,.25);
     }
-
-    .support-box h3 {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
-      line-height: 1.35;
+    .compare h2 { color: #fff; margin-top: 0; }
+    .compare p { color: rgba(255,255,255,.72); font-weight: 650; }
+    .compare .section-label {
+      color: #ffd76a;
+      background: rgba(255, 189, 36, .16);
+      border: 1px solid rgba(255, 189, 36, .56);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
     }
-
-    .support-box p {
-      margin: 0;
-      color: var(--text-soft);
-    }
-
-    .support-actions {
+    .check-list { display: grid; gap: 12px; }
+    .check-item {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 850;
     }
+    .check-item span { color: var(--brand); }
+
+    .faq { display: grid; gap: 12px; max-width: 860px; margin: 0 auto; }
+    details {
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(23,32,51,.06);
+      overflow: hidden;
+    }
+    summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin: 0; padding: 0 20px 20px; color: var(--muted); font-weight: 650; }
+
+    .final-cta {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 22px 76px;
+    }
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+      padding: 34px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #ffcf48, #ff9a6c);
+      box-shadow: 0 24px 72px rgba(255, 154, 108, .30);
+    }
+    .cta-box h2 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 42px); line-height: 1.18; letter-spacing: -.05em; }
+    .cta-box p { margin: 0; color: rgba(23,32,51,.78); font-weight: 750; }
 
     .site-footer {
-      padding: 26px 0 42px;
+      border-top: 1px solid rgba(23,32,51,.08);
+      background: rgba(255,255,255,.45);
     }
-
-    .footer-card {
-      padding: 26px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .footer-top {
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 22px;
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .footer-title {
-      margin: 0;
-      font-size: 1.06rem;
-      font-weight: 800;
-    }
-
-    .footer-copy {
-      margin: 6px 0 0;
-      color: var(--text-soft);
-      font-size: 0.94rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.05);
-      color: var(--text-soft);
-      font-size: 0.9rem;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
       font-weight: 700;
-      transition: 0.25s ease;
     }
+    .footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: underline; text-underline-offset: 4px; }
 
-    .footer-links a:hover {
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary-dark);
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 20px; }
+      .phone-stage { min-height: 560px; }
+      .problems, .steps { grid-template-columns: 1fr; }
+      .features, .compare { grid-template-columns: 1fr; }
+      .mock-shot { width: min(100%, 280px); }
+      .shot-frame { max-height: 560px; }
+      .cta-box, .footer-inner { flex-direction: column; align-items: flex-start; }
     }
-
-    .copyright {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-      color: #64748b;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .features-wrap,
-      .support-box {
-        grid-template-columns: 1fr;
-      }
-
-      .apps-grid,
-      .feature-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 52px;
-      }
-
-      .hero-visual {
-        min-height: auto;
-      }
-
-      .float-card.one,
-      .float-card.two {
-        position: static;
-        margin-top: 14px;
-      }
-
-      .support-actions {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .nav {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .nav a {
-        padding: 9px 12px;
-        font-size: 0.9rem;
-      }
-
-      .hero h1 {
-        font-size: 2.15rem;
-      }
-
-      .hero-actions,
-      .card-actions,
-      .footer-links {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button,
-      .mini-button {
-        width: 100%;
-      }
-
-      .feature-list,
-      .stats {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 640px) {
+      .nav a:not(.mini-cta) { display: none; }
+      .header-inner { padding: 12px 16px; }
+      .hero, .section, .final-cta { padding-left: 16px; padding-right: 16px; }
+      .hero { padding-top: 38px; }
+      h1 { font-size: 29px; line-height: 1.16; letter-spacing: -.05em; }
+      .hero-title-row { gap: 12px; align-items: flex-start; }
+      .app-icon { width: 54px; height: 54px; border-radius: 17px; margin-top: 2px; }
+      .lead { font-size: 16px; }
+      .steps-wrap { padding: 14px; border-radius: 26px; }
+      .phone { width: min(300px, 82vw); border-radius: 42px; }
+      .floating-card { font-size: 13px; padding: 12px 14px; }
+      .floating-card.camera { right: 0; top: 88px; }
+      .floating-card.lesson { left: 0; bottom: 88px; }
+      .cta-row { align-items: stretch; }
+      .app-store-badge, .google-play-badge { width: 100%; justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./">
-        <div class="brand-mark">H</div>
-        <div>
-          <p class="brand-name">HamameApp</p>
-          <p class="brand-sub">パズルアプリ・Webパズルの公式サイト</p>
-        </div>
+    <div class="header-inner">
+      <a class="logo" href="https://hamameapp.xyz/" aria-label="HamameAppトップへ">
+        <img class="logo-icon" src="assets/icon.png" alt="ナンプレ先生アイコン" width="1024" height="1024">
+        <span>ナンプレ先生</span>
       </a>
-
-      <nav class="nav" aria-label="グローバルナビゲーション">
-        <a href="#apps">アプリ</a>
-        <a href="#features">特長</a>
-        <a href="./nanpure-sensei/">ナンプレ先生</a>
-        <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
-        <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
-        <a href="./about.html">運営者情報</a>
-        <a href="./support.html" class="nav-cta">サポート</a>
+      <nav class="nav" aria-label="ページ内メニュー">
+        <a href="#howto">使い方</a>
+        <a href="#features">できること</a>
+        <a href="#faq">FAQ</a>
+        <a class="mini-cta" href="#download">無料ダウンロード</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">📷 雑誌・新聞のナンプレに対応</div>
+        <div class="hero-title-row">
+          <img class="app-icon" src="assets/icon.png" alt="ナンプレ先生アプリアイコン" width="1024" height="1024">
+          <h1><span class="nowrap">紙のナンプレをスキャン。</span><br><span class="marker">解き方までわかる。</span></h1>
+        </div>
+        <p class="lead">ナンプレ先生は、紙のナンプレ・数独をカメラで読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは「次の一手」と理由をやさしく解説します。</p>
+        <div class="cta-row" id="download">
+          <div class="store-buttons">
+            <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+              <span class="apple-symbol"></span>
+              <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
+            </a>
+            <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
+              <span class="play-symbol" aria-hidden="true"></span>
+              <span class="badge-copy"><strong>Google Play</strong><small>で手に入れよう</small></span>
+            </a>
+          </div>
+          <a class="sub-link" href="#howto">使い方を見る</a>
+        </div>
+        <p class="note">無料ダウンロード。広告を含みます。ログインなしで始められます。</p>
+        <div class="hero-points" aria-label="主な特徴">
+          <span>✓ 紙の問題を撮影</span>
+          <span>✓ 写真から読み込み</span>
+          <span>✓ 次の一手を表示</span>
+          <span>✓ 解き方を解説</span>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-label="ナンプレ先生のアプリ画面イメージ">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="floating-card camera">カメラで読み取り<small>紙のナンプレをスマホへ</small></div>
+        <div class="floating-card lesson">ヒント解説<small>次の一手がわかる</small></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="assets/main.png" alt="ナンプレ先生のヒント解説画面。次の一手と理由が表示されているスクリーンショット" width="832" height="1792">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="problem-title">
+      <div class="section-head">
+        <span class="section-label">こんな経験ありませんか？</span>
+        <h2 id="problem-title">紙のナンプレで止まった時間を、もう一度楽しく。</h2>
+        <p>雑誌や新聞の問題をそのまま活かして、スマホで続きから考えられます。</p>
+      </div>
+      <div class="problems">
+        <article class="problem-card">
+          <div class="icon">📖</div>
+          <h3>雑誌の問題を、スマホでも解きたい</h3>
+          <p>カメラで撮影して盤面を取り込み。紙の問題をデジタルで扱いやすくします。</p>
+        </article>
+        <article class="problem-card">
+          <div class="icon">🤔</div>
+          <h3>途中で詰まって、先に進めない</h3>
+          <p>次に見るべきマスを確認できるので、悩みすぎずに再開できます。</p>
+        </article>
+        <article class="problem-card">
+          <div class="icon">🎓</div>
+          <h3>答えよりも、解き方を知りたい</h3>
+          <p>数字を埋めるだけではなく、なぜそこに入るのかを学べます。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="howto" aria-labelledby="howto-title">
+      <div class="section-head">
+        <span class="section-label">3ステップ</span>
+        <h2 id="howto-title">撮る。確認する。解き方がわかる。</h2>
+        <p>実際の画面で、読み取りから解き方までの流れを紹介します。</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>紙のナンプレを撮影</h3>
+            <p>雑誌や新聞の問題をカメラで撮影。写真フォルダの画像からも読み込めます。</p>
+            <div class="mock-shot"><img src="assets/step-01-scan.png" alt="ナンプレ先生で紙のナンプレを撮影する画面" loading="lazy" width="832" height="1792"></div>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>読み取り結果を確認</h3>
+            <p>読み取った数字を確認して、必要なところだけサッと修正できます。</p>
+            <div class="mock-shot"><img src="assets/step-02-check.png" alt="ナンプレ先生の読み取り結果を確認する画面" loading="lazy" width="832" height="1792"></div>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>ヒントと解説で学ぶ</h3>
+            <p>詰まったときは次の一手を表示。理由を見ながら、解き方を身につけられます。</p>
+            <div class="mock-shot"><img src="assets/step-03-hint.png" alt="ナンプレ先生のヒントと解説で学ぶ画面" loading="lazy" width="832" height="1792"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <span class="section-label">できること</span>
+        <h2 id="features-title">紙派にも、アプリ派にも使いやすく。</h2>
+        <p>ナンプレをただ解くためだけでなく、考え方を覚えるための機能をまとめました。</p>
+      </div>
+      <div class="features">
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>カメラで盤面読み取り</h3><p>紙面のナンプレ・数独を撮影して、スマホ上の盤面として扱えます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>写真フォルダから読み込み</h3><p>保存済みの画像やスクリーンショットからも取り込みできます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>次の一手を表示</h3><p>行き詰まったとき、次に考える場所をわかりやすく示します。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>解き方の理由を解説</h3><p>答えだけでなく、候補のしぼり方や考え方を確認できます。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>初心者にもやさしい</h3><p>「どこを見ればいいかわからない」という状態からでも始めやすい設計です。</p></div></article>
+        <article class="feature"><div class="feature-mark">✓</div><div><h3>アプリ内の問題でも遊べる</h3><p>手元の問題だけでなく、アプリ内の問題でもナンプレを楽しめます。</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="compare-title">
+      <div class="compare">
         <div>
-          <div class="eyebrow">Official Site / Puzzle App Studio</div>
-          <h1>
-            毎日を少し楽しくする、<br />
-            シンプルで気持ちいい<br />
-            パズル体験。
-          </h1>
-          <p class="lead">
-            HamameApp は、数独やロジックパズルを中心に、
-            直感的に遊べて、長く付き合えるアプリとWebパズルを制作しています。
-            使いやすさ、快適さ、分かりやすさを大切にした公式サイトです。
-          </p>
-
-          <div class="hero-actions">
-            <a class="button primary" href="./apps.html">アプリを見る</a>
-            <a class="button secondary" href="./nanpure-sensei/">ナンプレ先生 iPhone版</a>
-            <a class="button secondary" href="./sudoku/">ナンプレ先生を試す</a>
-            <a class="button secondary" href="https://game.hamameapp.xyz/">合体ナンプレを遊ぶ</a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="meta-chip">iPhone / Web で展開</div>
-            <div class="meta-chip">シンプルな操作性</div>
-            <div class="meta-chip">プライバシーに配慮</div>
-          </div>
+          <span class="section-label">ナンプレ先生の強み</span>
+          <h2 id="compare-title">ただの自動解答アプリではありません。</h2>
+          <p>答えを出して終わりではなく、「なぜその数字になるのか」を確認できるので、次の問題にも活かせます。</p>
         </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="glow"></div>
-
-          <div class="device-shell">
-            <div class="device-notch"></div>
-            <div class="device-screen">
-              <div class="screen-badge">Featured Puzzle Experience</div>
-              <h2 class="screen-title">考える時間が、<br>気持ちよく続く設計へ。</h2>
-              <p class="screen-text">
-                数独、合体ナンプレ、ナンバースケルトンなど、
-                ひらめきとロジックの心地よさを、すっきりしたUIで届けます。
-              </p>
-
-              <div class="mini-grid">
-                <div class="mini-cell">5</div>
-                <div class="mini-cell">8</div>
-                <div class="mini-cell">2</div>
-                <div class="mini-cell">7</div>
-                <div class="mini-cell">3</div>
-                <div class="mini-cell">9</div>
-                <div class="mini-cell">1</div>
-                <div class="mini-cell">6</div>
-                <div class="mini-cell">4</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="float-card one">
-            <strong>直感的なUI</strong>
-            <span>迷わず遊べる設計</span>
-          </div>
-
-          <div class="float-card two">
-            <strong>アプリ + Web</strong>
-            <span>気軽に始めて、じっくり続ける</span>
-          </div>
+        <div class="check-list">
+          <div class="check-item"><span>✓</span>紙のナンプレ・数独をアプリに取り込める</div>
+          <div class="check-item"><span>✓</span>途中で詰まっても、次の一手がわかる</div>
+          <div class="check-item"><span>✓</span>解き方を覚えながらナンプレを楽しめる</div>
+          <div class="check-item"><span>✓</span>初心者の練習にも、難問の確認にも使える</div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="apps">
-      <div class="container">
-        <div class="section-label">Apps</div>
-        <h2>提供中のアプリ・Webパズル</h2>
-        <p class="section-intro">
-          ひとつひとつのパズル体験を、分かりやすく、快適に。
-          HamameApp の代表的なタイトルをまとめています。
-        </p>
-
-        <div class="apps-grid">
-          <article class="card app-card featured">
-            <div class="featured-label">iPhoneアプリ</div>
-            <div class="app-head">
-              <div class="app-icon image">
-                <img src="https://hamameapp.xyz/nanpure-sensei/assets/icon.png" alt="ナンプレ先生アイコン" width="1024" height="1024" />
-              </div>
-              <div>
-                <h3 class="app-title">ナンプレ先生</h3>
-                <p class="app-sub">iPhoneアプリ / Web版数独</p>
-              </div>
-            </div>
-            <p>
-              スキャン取り込みやヒント表示、「次の一手」解説などを備えた、
-              学びながら楽しめる数独アプリです。
-            </p>
-            <div class="tag-row">
-              <span class="tag">盤面スキャン</span>
-              <span class="tag">詳細ヒント</span>
-              <span class="tag">オフライン対応</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-button primary" href="./nanpure-sensei/">iPhone版を見る</a>
-              <a class="mini-button" href="./sudoku/">Web版を遊ぶ</a>
-              <a class="mini-button" href="./apps.html">アプリ紹介</a>
-            </div>
-          </article>
-
-          <article class="card app-card">
-            <div class="app-head">
-              <div class="app-icon purple">合</div>
-              <div>
-                <h3 class="app-title">合体ナンプレ</h3>
-                <p class="app-sub">Webアプリ</p>
-              </div>
-            </div>
-            <p>
-              直感的な操作感と手軽さを重視した数独系パズルです。
-              無料でも快適に遊べる、軽やかなWeb体験を目指しています。
-            </p>
-            <div class="tag-row">
-              <span class="tag">候補メモ</span>
-              <span class="tag">自動チェック</span>
-              <span class="tag">ブラウザ対応</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-button primary" href="https://game.hamameapp.xyz/">遊んでみる</a>
-              <a class="mini-button" href="./guide-nanpure.html">遊び方ガイド</a>
-            </div>
-          </article>
-
-          <article class="card app-card">
-            <div class="app-head">
-              <div class="app-icon green">骨</div>
-              <div>
-                <h3 class="app-title">ナンバースケルトン</h3>
-                <p class="app-sub">iPhoneアプリ</p>
-              </div>
-            </div>
-            <p>
-              数字の配置ルールを手がかりに、空白のマスを埋めて完成させるロジック系パズルです。
-              短時間でも集中して楽しめる設計です。
-            </p>
-            <div class="tag-row">
-              <span class="tag">ライト〜ハード</span>
-              <span class="tag">途中保存</span>
-              <span class="tag">やり直し対応</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-button primary" href="./apps.html">アプリ紹介へ</a>
-              <a class="mini-button" href="./support.html">サポート</a>
-            </div>
-          </article>
-        </div>
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <span class="section-label">FAQ</span>
+        <h2 id="faq-title">よくある質問</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>無料で使えますか？</summary>
+          <p>無料でダウンロードできます。アプリ内に広告が表示される場合があります。</p>
+        </details>
+        <details>
+          <summary>雑誌や新聞のナンプレも読み取れますか？</summary>
+          <p>紙の問題をカメラで撮影して取り込めます。紙面の状態や撮影環境によって、読み取り後に修正が必要になる場合があります。</p>
+        </details>
+        <details>
+          <summary>写真フォルダの画像からも読み込めますか？</summary>
+          <p>保存済みの画像から盤面を取り込むこともできます。</p>
+        </details>
+        <details>
+          <summary>初心者でも使えますか？</summary>
+          <p>はい。次の一手や解説を見ながら進められるので、ナンプレの考え方を少しずつ覚えたい方にも向いています。</p>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-label">Why HamameApp</div>
-        <h2>小さくても、きちんと作る。</h2>
-        <p class="section-intro">
-          HamameApp は、派手さよりも、日々の使いやすさと心地よさを大切にしています。
-          遊び始めやすく、長く使いやすい設計を目指しています。
-        </p>
-
-        <div class="features-wrap">
-          <div class="feature-list">
-            <article class="feature-item">
-              <div class="num">01</div>
-              <h3>シンプルで分かりやすいUI</h3>
-              <p>
-                はじめてでも迷いにくく、何度も触りたくなる操作感を重視。
-                余計な複雑さを減らし、遊ぶことに集中できる体験を目指します。
-              </p>
-            </article>
-
-            <article class="feature-item">
-              <div class="num">02</div>
-              <h3>快適な動作と見やすさ</h3>
-              <p>
-                読みやすい画面設計、軽快な操作、落ち着いた見た目で、
-                短時間でも長時間でも心地よく使えることを大切にしています。
-              </p>
-            </article>
-
-            <article class="feature-item">
-              <div class="num">03</div>
-              <h3>ユーザーの声を反映</h3>
-              <p>
-                使いにくさや改善点を拾いながら、少しずつアップデート。
-                使うほど整っていくプロダクトを目指しています。
-              </p>
-            </article>
-
-            <article class="feature-item">
-              <div class="num">04</div>
-              <h3>プライバシーに配慮</h3>
-              <p>
-                必要な情報だけを扱い、安心して利用できる運営を心がけています。
-                サイト・アプリの案内情報も分かりやすく整理しています。
-              </p>
-            </article>
-          </div>
-
-          <aside class="feature-panel">
-            <h3>遊びたいパズルに、すぐたどり着けます。</h3>
-            <p>
-              アプリ紹介、Web版パズル、サポート情報をわかりやすく掲載。
-              気になるタイトルを見つけて、すぐに遊び始められます。
-            </p>
-
-            <div class="stats">
-              <div class="stat-box">
-                <div class="stat-label">Main Contents</div>
-                <div class="stat-value">Apps / Web / Support</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Design Policy</div>
-                <div class="stat-value">Simple / Clear / Comfortable</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Support</div>
-                <div class="stat-value">メールで受付</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Official Pages</div>
-                <div class="stat-value">Privacy / Terms / About</div>
-              </div>
-            </div>
-          </aside>
+    <section class="final-cta" aria-label="ダウンロード案内">
+      <div class="cta-box">
+        <div>
+          <h2>紙のナンプレを、もっと気軽に。</h2>
+          <p>撮影して、解いて、学べる。ナンプレ先生をApp Storeでダウンロード。</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="support-box">
-          <div>
-            <h3>お問い合わせ・サポート</h3>
-            <p>
-              ご意見・ご要望・不具合報告は、メールまたはサポートページからご連絡ください。
-              公式情報や各種ポリシーもあわせてご確認いただけます。
-            </p>
-          </div>
-
-          <div class="support-actions">
-            <a class="button primary" href="./support.html">サポートページ</a>
-            <a class="button secondary" href="mailto:hamameapp@gmail.com">メールする</a>
+        <div>
+          <div class="store-buttons">
+            <a class="app-store-badge" href="https://apps.apple.com/jp/app/id6755796331" aria-label="App Storeでナンプレ先生をダウンロード">
+              <span class="apple-symbol"></span>
+              <span class="badge-copy"><strong>App Store</strong><small>からダウンロード</small></span>
+            </a>
+            <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja" aria-label="Google Playでナンプレ先生をダウンロード">
+              <span class="play-symbol" aria-hidden="true"></span>
+              <span class="badge-copy"><strong>Google Play</strong><small>で手に入れよう</small></span>
+            </a>
           </div>
         </div>
       </div>
@@ -1114,33 +823,69 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-card">
-        <div class="footer-top">
-          <div>
-            <p class="footer-title">HamameApp</p>
-            <p class="footer-copy">
-              数独・ロジックパズルを中心に、気持ちよく遊べる体験を届ける公式サイト。
-            </p>
-          </div>
-
-          <div class="footer-links">
-            <a href="./">トップ</a>
-            <a href="./apps.html">アプリ紹介</a>
-            <a href="./nanpure-sensei/">ナンプレ先生</a>
-        <a href="./sudoku/">ナンプレ先生（Web版数独）</a>
-            <a href="https://game.hamameapp.xyz/">合体ナンプレ</a>
-            <a href="./guide-nanpure.html">遊び方ガイド</a>
-            <a href="./support.html">お問い合わせ・サポート</a>
-            <a href="./privacy.html">プライバシーポリシー</a>
-            <a href="./terms.html">利用規約</a>
-            <a href="./about.html">運営者情報</a>
-          </div>
-        </div>
-
-        <div class="copyright">© HamameApp</div>
+    <div class="footer-inner">
+      <div>© HamameApp. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="https://hamameapp.xyz/">HamameApp</a>
+        <a href="https://hamameapp.xyz/sudokuteacher/support/">サポート</a>
+        <a href="https://hamameapp.xyz/sudokuteacher/privacy/">プライバシーポリシー</a>
       </div>
     </div>
   </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ナンプレ先生",
+    "alternateName": ["数独先生", "Sudoku Teacher"],
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Puzzle game",
+    "description": "ナンプレ先生は、雑誌や新聞のナンプレ・数独をカメラで撮影して読み取り、スマホで解けるiOS・Android対応アプリです。詰まったときは次の一手と解き方をやさしく解説します。",
+    "url": "https://hamameapp.xyz/nanpure-sensei/",
+    "downloadUrl": "https://apps.apple.com/jp/app/id6755796331",
+      "sameAs": [
+        "https://apps.apple.com/jp/app/id6755796331",
+        "https://play.google.com/store/apps/details?id=com.hamame.sudokuteacher&hl=ja"
+      ],
+      "image": "https://hamameapp.xyz/nanpure-sensei/assets/icon.png",
+    "image": "https://hamameapp.xyz/nanpure-sensei/assets/ogp.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "HamameApp",
+      "url": "https://hamameapp.xyz/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ナンプレ先生は無料で使えますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "無料でダウンロードできます。アプリ内に広告が表示される場合があります。"}
+      },
+      {
+        "@type": "Question",
+        "name": "雑誌や新聞のナンプレも読み取れますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "紙の問題をカメラで撮影して取り込めます。紙面の状態や撮影環境によって、読み取り後に修正が必要になる場合があります。"}
+      },
+      {
+        "@type": "Question",
+        "name": "写真フォルダの画像からも読み込めますか？",
+        "acceptedAnswer": {"@type": "Answer", "text": "保存済みの画像から盤面を取り込むこともできます。"}
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
