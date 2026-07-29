@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>プライバシーポリシー | タロットノート</title>
+  <meta name="description" content="タロット学習アプリ「タロットノート」のプライバシーポリシーです。端末内データ、広告、アプリ内購入の情報取り扱いをご案内します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8063bc">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <style>
+:root {
+  color-scheme: light dark;
+  --violet: #8063bc;
+  --violet-deep: #60449c;
+  --violet-soft: rgba(128, 99, 188, .14);
+  --pink: #d779ad;
+  --pink-soft: rgba(215, 121, 173, .14);
+  --blue: #5d91c9;
+  --blue-soft: rgba(93, 145, 201, .13);
+  --gold: #bd9136;
+  --gold-soft: rgba(189, 145, 54, .13);
+  --ink: #252238;
+  --line: rgba(128, 128, 128, .25);
+  --card: rgba(128, 128, 128, .065);
+  --shadow: 0 14px 40px rgba(78, 48, 112, .09);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: CanvasText;
+  background:
+    radial-gradient(circle at 92% 8%, var(--pink-soft), transparent 27rem),
+    radial-gradient(circle at 4% 82%, var(--blue-soft), transparent 30rem),
+    radial-gradient(circle at 55% 35%, var(--gold-soft), transparent 38rem),
+    Canvas;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    Meiryo, sans-serif;
+  line-height: 1.82;
+}
+
+.container { max-width: 920px; margin: 0 auto; padding: 44px 18px 64px; }
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: color-mix(in srgb, Canvas 88%, transparent);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+.app-icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 8px 22px rgba(70, 39, 97, .20);
+}
+.header-copy { min-width: 0; }
+.header-copy h1 { margin: 0; font-size: clamp(1.55rem, 4.2vw, 2.15rem); line-height: 1.3; }
+.header-copy p { margin: .3rem 0 0; opacity: .75; }
+
+.top-nav, .lang-nav { display: flex; gap: 9px; flex-wrap: wrap; margin: 20px 0 28px; }
+.top-nav a, .lang-nav a, .button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 750;
+  border: 1px solid transparent;
+}
+.top-nav a { background: var(--violet-soft); color: var(--violet-deep); }
+.lang-nav a { background: var(--pink-soft); color: #aa4f7c; }
+.top-nav a:hover, .lang-nav a:hover { border-color: currentColor; }
+
+main { margin-top: 24px; }
+section { scroll-margin-top: 18px; }
+h1, h2, h3 { line-height: 1.38; }
+h2 { margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: .3em; }
+h3 { margin-top: 1.45em; }
+a { color: #176bc1; }
+ul, ol { padding-left: 1.35em; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+
+.note, .hero-card, .contact, .warning {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: color-mix(in srgb, Canvas 91%, transparent);
+  box-shadow: var(--shadow);
+}
+.note { padding: 15px 17px; margin: 18px 0; }
+.hero-card { padding: clamp(22px, 5vw, 38px); margin: 24px 0; }
+.hero-card h2 { border: 0; margin: 0 0 .45em; padding: 0; font-size: clamp(1.55rem, 4vw, 2.25rem); }
+.hero-card p { margin: .5em 0; }
+.contact { border-left: 5px solid var(--violet); padding: 18px 20px; margin: 28px 0; }
+.contact h2 { border: 0; margin: 0 0 .55em; padding: 0; }
+.warning { border-left: 5px solid var(--gold); padding: 17px 20px; margin: 22px 0; }
+
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+.feature-card { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+.feature-card strong { display: block; margin-bottom: 5px; color: var(--violet-deep); }
+
+.link-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0; }
+.link-card {
+  display: block;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: color-mix(in srgb, Canvas 91%, transparent);
+  text-decoration: none;
+  color: CanvasText;
+  box-shadow: var(--shadow);
+  transition: transform .18s ease;
+}
+.link-card:hover { transform: translateY(-2px); }
+.link-card strong { display: block; font-size: 1.18rem; color: var(--violet-deep); }
+.link-card span { opacity: .75; }
+
+details { border: 1px solid var(--line); border-radius: 15px; padding: 13px 16px; margin: 12px 0; background: var(--card); }
+summary { cursor: pointer; font-weight: 750; }
+details p, details ul, details ol { margin-bottom: .35em; }
+.small { font-size: .93em; opacity: .78; }
+footer { margin-top: 44px; opacity: .72; text-align: center; font-size: .94rem; }
+
+@media (max-width: 720px) {
+  .container { padding-top: 22px; }
+  .site-header { align-items: flex-start; padding: 16px; border-radius: 20px; }
+  .app-icon { width: 60px; height: 60px; border-radius: 15px; }
+  .feature-grid, .link-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <img class="app-icon" src="../assets/tarotnote-icon.png" alt="タロットノートのアプリアイコン">
+      <div class="header-copy">
+        <h1>プライバシーポリシー</h1>
+        <p>「タロットノート」</p>
+      </div>
+    </header>
+
+    <nav class="top-nav" aria-label="ページ">
+      <a href="../support/">サポート</a>
+    </nav>
+    <nav class="lang-nav" aria-label="言語">
+      <a href="#ja">日本語</a>
+      <a href="#en">English</a>
+    </nav>
+
+    <main>
+
+      <section id="ja">
+        <p>本アプリ「タロットノート」（以下、「本アプリ」）は、ユーザーのプライバシーを尊重し、以下の方針に基づいて情報を取り扱います。</p>
+
+        <h2>1. 開発者が取得する個人情報について</h2>
+        <p>本アプリでは、ユーザーの氏名、住所、電話番号、メールアドレスなど、ユーザーを直接個人として特定できる情報を開発者がアプリ内で取得することはありません。ログインやアカウント登録も必要ありません。</p>
+
+        <h2>2. 端末内に保存される情報</h2>
+        <p>学習機能、占い、ノートおよび設定を維持するため、以下の情報が主にユーザーの端末内に保存されます。</p>
+        <ul>
+          <li>確認済みのカードの象徴や学習進捗</li>
+          <li>読み方練習および複数カード練習の完了状況</li>
+          <li>ノートに入力した質問、引いたカード、解釈、振り返り</li>
+          <li>広告表示の間隔を調整するための端末内情報</li>
+          <li>広告削除購入の確認結果を一時的に保持する情報</li>
+        </ul>
+        <p>これらの情報は、アプリの機能を提供するために利用されます。現在、開発者のサーバーへのノート送信、iCloud同期、端末間同期は行っていません。</p>
+        <p>アプリを削除すると、端末内に保存されたノートや学習記録も削除される場合があります。広告削除の購入履歴はAppleが管理しており、同じApple Accountで復元できます。</p>
+
+        <h2>3. 広告について</h2>
+        <p>本アプリでは、無料版の広告配信のためにGoogle AdMobを使用しています。Google Mobile Ads SDKは、広告の表示、効果測定、不正利用防止、広告の関連性向上、同意管理などの目的で、端末情報、IPアドレス、広告識別子、アプリや広告の操作情報、診断情報などを処理する場合があります。IPアドレスなどから、おおよその地域が推定される場合もあります。</p>
+        <p>処理される情報は、ユーザーの地域、端末設定、同意状況、Googleのサービス設定などによって異なります。対象地域では、アプリ内に表示されるプライバシー設定から、広告に関する選択肢を変更できる場合があります。</p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a></li>
+          <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google のサービスを使用するサイトやアプリから収集した情報の利用</a></li>
+        </ul>
+
+        <h2>4. アプリ内購入について</h2>
+        <p>本アプリでは、広告を非表示にする非消耗型のアプリ内購入「広告を削除」を提供しています。月額課金ではなく、一度だけの購入です。</p>
+        <p>購入処理、購入履歴、返金、購入状態の確認および復元は、AppleのApp StoreおよびStoreKitを通じて行われます。開発者がクレジットカード番号などの決済情報を取得することはありません。</p>
+        <p><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple プライバシーポリシー</a></p>
+
+        <h2>5. 解析ツールについて</h2>
+        <p>本アプリでは、現時点でGoogle AdMobによる広告配信、広告計測、同意管理に関連する処理を除き、外部のアクセス解析サービスを使用していません。将来、新たな解析サービスを導入する場合は、本ページを更新します。</p>
+
+        <h2>6. 端末の機能と権限について</h2>
+        <p>本アプリは、タロットの学習、占い、ノート機能のために、マイク、カメラ、写真ライブラリ、連絡先、正確な位置情報を使用しません。広告事業者がIPアドレスなどからおおよその地域を推定する場合がありますが、本アプリが端末の正確な位置情報を取得するものではありません。</p>
+
+        <h2>7. インターネット通信について</h2>
+        <p>本アプリは、広告の表示と同意管理、アプリ内購入、購入状態の確認・復元などのためにインターネット通信を行う場合があります。カード画像、カード解説、読み方練習、占い、ノートなどの主要機能は、アプリ内または端末上で動作します。</p>
+
+        <h2>8. 情報の第三者提供</h2>
+        <p>開発者は、法令に基づく場合を除き、ユーザーを直接個人として特定できる情報を販売しません。広告配信および決済処理に必要な情報は、GoogleおよびAppleがそれぞれの方針に基づいて処理します。</p>
+
+        <h2>9. お子様の利用について</h2>
+        <p>本アプリは子どもから大人まで利用できる内容を目指しています。保護者の方は、必要に応じて端末の購入制限、広告設定、コンテンツ制限をご利用ください。</p>
+
+        <h2>10. 安全管理</h2>
+        <p>開発者は、本アプリの仕様に応じて、情報の漏えい、紛失、改ざんなどを防ぐための合理的な安全対策に努めます。ただし、インターネット通信や端末内保存に関する完全な安全性を保証するものではありません。</p>
+
+        <h2>11. お問い合わせ先</h2>
+        <p>本アプリまたは本プライバシーポリシーに関するお問い合わせは、以下までご連絡ください。<br>📩 <a href="mailto:hamameapp@gmail.com">hamameapp@gmail.com</a></p>
+
+        <h2>12. 改定について</h2>
+        <p>本プライバシーポリシーは、法令、外部サービス、またはアプリの仕様変更に応じて改定される場合があります。最新の内容は本ページで公開します。</p>
+
+        <p class="small">制定日：2026年7月30日</p>
+      </section>
+
+      <hr>
+
+      <section id="en" lang="en">
+        <h1>Privacy Policy</h1>
+        <p>This Privacy Policy explains how “TarotNote” (“the App”) handles information.</p>
+
+        <h2>1. Personal Information Collected by the Developer</h2>
+        <p>The App does not require login or account registration, and the developer does not collect information within the App that directly identifies you, such as your name, address, phone number, or email address.</p>
+
+        <h2>2. Information Stored on Your Device</h2>
+        <p>The following information is stored mainly on your device to provide learning, reading, journal, and settings features:</p>
+        <ul>
+          <li>Viewed card symbols and learning progress</li>
+          <li>Completion status for contextual and multi-card practice</li>
+          <li>Journal questions, drawn cards, interpretations, and follow-up notes</li>
+          <li>Local information used to manage ad display intervals</li>
+          <li>A locally cached result of the Remove Ads entitlement check</li>
+        </ul>
+        <p>The App currently does not upload journal entries to a developer server or provide iCloud or cross-device sync. Deleting the App may also delete locally stored notes and progress. Purchase history is managed by Apple and may be restored using the same Apple Account.</p>
+
+        <h2>3. Advertising</h2>
+        <p>The free version uses Google AdMob. The Google Mobile Ads SDK may process device information, IP addresses, advertising identifiers, app and ad interaction data, and diagnostic information for ad delivery, measurement, fraud prevention, relevance, and consent management. Approximate location may be inferred from an IP address.</p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+          <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a></li>
+        </ul>
+
+        <h2>4. In-App Purchases</h2>
+        <p>The App offers a one-time, non-consumable Remove Ads purchase. Purchases, refunds, purchase history, verification, and restoration are processed through Apple’s App Store and StoreKit. The developer does not receive your credit card number or other payment details.</p>
+        <p><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></p>
+
+        <h2>5. Analytics</h2>
+        <p>The App does not currently use separate third-party analytics services other than processing related to ad delivery, ad measurement, and consent management through Google AdMob.</p>
+
+        <h2>6. Device Permissions</h2>
+        <p>The App does not use the microphone, camera, photo library, contacts, or precise location for its tarot learning, reading, and journal features. Advertising providers may infer approximate location from information such as an IP address.</p>
+
+        <h2>7. Internet Communication</h2>
+        <p>The App may connect to the internet for advertising, consent management, in-app purchases, entitlement verification, and purchase restoration. Core card, learning, reading, and journal features operate within the App or on your device.</p>
+
+        <h2>8. Sharing with Third Parties</h2>
+        <p>The developer does not sell information that directly identifies you, except as required by law. Information needed for advertising and payment processing is handled by Google and Apple under their respective policies.</p>
+
+        <h2>9. Children’s Use</h2>
+        <p>The App is designed to be readable by users of various ages. Parents or guardians may use device purchase restrictions, ad settings, and content restrictions as appropriate.</p>
+
+        <h2>10. Security</h2>
+        <p>The developer uses reasonable safeguards appropriate to the App’s design. However, no method of device storage or internet transmission can be guaranteed to be completely secure.</p>
+
+        <h2>11. Contact</h2>
+        <p>If you have questions about the App or this Privacy Policy, contact:<br>📩 <a href="mailto:hamameapp@gmail.com">hamameapp@gmail.com</a></p>
+
+        <h2>12. Changes to This Policy</h2>
+        <p>This Privacy Policy may be updated due to changes in laws, third-party services, or App features. The latest version will be published on this page.</p>
+
+        <p class="small">Effective date: July 30, 2026</p>
+      </section>
+
+      <hr>
+    </main>
+
+    <footer><p>© 2026 HamameApp</p></footer>
+  </div>
+</body>
+</html>
