@@ -6,6 +6,10 @@
   <title>アプリ一覧 | HamameApp</title>
   <meta name="description" content="HamameAppが公開しているiPhone・Androidアプリを、アイコンと特徴付きで一覧紹介。パズル、数独、韓国語、百人一首などを掲載しています。">
   <meta name="theme-color" content="#10213b">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
   <style>
     :root {
       --navy: #10213b;
@@ -69,16 +73,11 @@
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 900;
-      font-size: 22px;
-      background: linear-gradient(145deg, var(--pink), #ff7c9f);
-      box-shadow: 0 8px 20px rgba(240,78,125,.28);
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      object-fit: contain;
+      filter: drop-shadow(0 7px 13px rgba(28, 111, 174, .18));
     }
 
     .brand-copy strong { display: block; font-size: 17px; letter-spacing: .01em; }
@@ -229,6 +228,12 @@
       transform: translateY(-3px);
       border-color: #c9d7ea;
       box-shadow: 0 16px 34px rgba(16,33,59,.11);
+    }
+
+    .app-card[id] { scroll-margin-top: 96px; }
+    .app-card:target {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 4px rgba(240,78,125,.14), 0 16px 34px rgba(16,33,59,.11);
     }
 
     .app-icon-wrap { position: relative; }
@@ -437,7 +442,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="HamameApp トップページ">
-        <span class="brand-mark" aria-hidden="true">H</span>
+        <img class="brand-mark" src="assets/brand/hamameapp-mark.png" alt="" width="46" height="46">
         <span class="brand-copy">
           <strong>HamameApp</strong>
           <span>パズルアプリ・学習アプリの公式サイト</span>
@@ -478,7 +483,7 @@
       </div>
 
       <div class="app-grid">
-        <article class="app-card">
+        <article class="app-card" id="hangul-note">
           <div class="app-icon-wrap">
             <img class="app-icon" src="assets/app-icons/hangul-note.webp" alt="ハングルノートのアプリアイコン" width="512" height="512" loading="eager">
             <span class="new-ribbon">NEW</span>
@@ -491,7 +496,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="sudoku-teacher">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/sudoku-teacher.webp" alt="ナンプレ先生のアプリアイコン" width="512" height="512" loading="eager"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">ナンプレ先生</h3><p class="app-subtitle">スキャン＆解説付き数独</p></div></div>
@@ -505,7 +510,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="number-line">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/number-line.webp" alt="ナンバーラインのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">ナンバーライン</h3><p class="app-subtitle">数字をつなぐパズル</p></div></div>
@@ -515,7 +520,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="one-stroke-puzzle">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/one-stroke-puzzle.webp" alt="一筆パズルのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">一筆パズル</h3><p class="app-subtitle">ぜんぶ塗る脳トレゲーム</p></div></div>
@@ -525,7 +530,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="hyakunin-isshu">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/hyakunin-isshu.webp" alt="百人一首のアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">百人一首</h3><p class="app-subtitle">絵で覚える暗記カード</p></div></div>
@@ -535,7 +540,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="mini-sudoku">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/mini-sudoku.webp" alt="すぐ解けるミニナンプレのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">すぐ解けるミニナンプレ</h3><p class="app-subtitle">4×4・6×6・8×8で脳トレ</p></div></div>
@@ -545,7 +550,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="number-skeleton">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/number-skeleton.webp" alt="NumberSkeletonのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">NumberSkeleton</h3><p class="app-subtitle">数字を交差させるロジックパズル</p></div></div>
@@ -558,7 +563,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="hako-chan">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/hako-chan.webp" alt="Hako-chanのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">Hako-chan</h3><p class="app-subtitle">指でなぞる爽快ブロックパズル</p></div></div>
@@ -568,7 +573,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="cassette-sorter">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/cassette-sorter.webp" alt="カセットソーターのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">カセットソーター</h3><p class="app-subtitle">並べ替えロジックパズル</p></div></div>
@@ -578,7 +583,7 @@
           </div>
         </article>
 
-        <article class="app-card">
+        <article class="app-card" id="picture-15-puzzle">
           <div class="app-icon-wrap"><img class="app-icon" src="assets/app-icons/picture-15-puzzle.webp" alt="15パズル Pictureのアプリアイコン" width="512" height="512" loading="lazy"></div>
           <div class="app-body">
             <div class="app-title-row"><div><h3 class="app-title">15パズル Picture</h3><p class="app-subtitle">写真で遊べるスライドパズル</p></div></div>
