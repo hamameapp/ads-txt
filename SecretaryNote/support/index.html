@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>サポート | 秘書検定NOTE</title>
+  <meta name="description" content="秘書検定2級・3級対策アプリ『秘書検定NOTE』のサポートページです。使い方、学習データ、iCloud同期、通知、広告に関するFAQとお問い合わせ先をご案内します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --pink: #d978a0;
+      --pink-deep: #b85c83;
+      --pink-soft: rgba(217, 120, 160, .14);
+      --mint: #5fa88d;
+      --mint-soft: rgba(95, 168, 141, .14);
+      --navy: #40536f;
+      --navy-soft: rgba(64, 83, 111, .12);
+      --line: rgba(128, 128, 128, .25);
+      --card: rgba(128, 128, 128, .065);
+      --shadow: 0 14px 40px rgba(88, 59, 78, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: CanvasText;
+      background:
+        radial-gradient(circle at 92% 8%, var(--pink-soft), transparent 27rem),
+        radial-gradient(circle at 4% 82%, var(--mint-soft), transparent 30rem),
+        Canvas;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.82;
+    }
+    .container { max-width: 920px; margin: 0 auto; padding: 44px 18px 64px; }
+    .site-header {
+      display: flex; align-items: center; gap: 15px; padding: 18px 20px;
+      border: 1px solid var(--line); border-radius: 24px;
+      background: color-mix(in srgb, Canvas 88%, transparent);
+      box-shadow: var(--shadow); backdrop-filter: blur(16px);
+    }
+    .app-icon { width: 70px; height: 70px; border-radius: 17px; box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+    .header-copy { min-width: 0; }
+    .header-copy h1 { margin: 0; font-size: clamp(1.55rem, 4.2vw, 2.15rem); line-height: 1.3; }
+    .header-copy p { margin: .3rem 0 0; opacity: .75; }
+    .top-nav, .lang-nav { display: flex; gap: 9px; flex-wrap: wrap; margin: 20px 0 28px; }
+    .top-nav a, .lang-nav a {
+      display: inline-flex; align-items: center; justify-content: center; padding: 8px 14px;
+      border-radius: 999px; text-decoration: none; font-weight: 750; border: 1px solid transparent;
+    }
+    .top-nav a { background: var(--navy-soft); color: var(--navy); }
+    .lang-nav a { background: var(--pink-soft); color: var(--pink-deep); }
+    .top-nav a:hover, .lang-nav a:hover { border-color: currentColor; }
+    main { margin-top: 24px; }
+    section { scroll-margin-top: 18px; }
+    h1, h2, h3 { line-height: 1.38; }
+    h2 { margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: .3em; }
+    a { color: #0a66c2; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+    details { border: 1px solid var(--line); border-radius: 15px; padding: 13px 16px; margin: 12px 0; background: var(--card); }
+    summary { cursor: pointer; font-weight: 750; }
+    details p, details ul { margin-bottom: .35em; }
+    .contact, .note {
+      border: 1px solid var(--line); border-radius: 18px;
+      background: color-mix(in srgb, Canvas 91%, transparent); box-shadow: var(--shadow);
+    }
+    .contact { border-left: 5px solid var(--pink); padding: 18px 20px; margin: 28px 0; }
+    .contact h2 { border: 0; margin: 0 0 .55em; padding: 0; }
+    .note { border-left: 5px solid var(--mint); padding: 15px 17px; margin: 22px 0; }
+    .small { font-size: .93em; opacity: .78; }
+    footer { margin-top: 44px; opacity: .72; text-align: center; font-size: .94rem; }
+    @media (max-width: 720px) {
+      .container { padding-top: 22px; }
+      .site-header { align-items: flex-start; padding: 16px; border-radius: 20px; }
+      .app-icon { width: 58px; height: 58px; border-radius: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <img class="app-icon" src="../assets/app-icon.png" alt="秘書検定NOTEのアプリアイコン">
+      <div class="header-copy">
+        <h1>「秘書検定NOTE」サポート</h1>
+        <p>秘書検定2級・3級対策アプリに関するご案内です。</p>
+      </div>
+    </header>
+
+    <nav class="top-nav" aria-label="ページ">
+      <a href="../privacy/">プライバシーポリシー</a>
+    </nav>
+    <nav class="lang-nav" aria-label="言語">
+      <a href="#ja">日本語</a>
+      <a href="#en">English</a>
+    </nav>
+
+    <main>
+      <section id="ja">
+        <h2>よくあるご質問（FAQ）</h2>
+
+        <details open>
+          <summary>このアプリでは何ができますか？</summary>
+          <p>秘書検定2級・3級を、本番を意識した5択問題と入力問題で学習できます。分野別学習、今日の10問、間違えた問題の復習、間隔反復、暗記カード、ランダム出題、CBT模擬試験などを利用できます。</p>
+        </details>
+
+        <details>
+          <summary>何問収録されていますか？</summary>
+          <p>2級160問、3級160問の合計320問を収録しています。級はホーム画面で切り替えられます。</p>
+        </details>
+
+        <details>
+          <summary>CBT模擬試験の内容を教えてください。</summary>
+          <p>2級・3級ともに各33問です。31問の5択問題と2問の入力問題に取り組み、最後に理論・実技別の結果を確認できます。</p>
+        </details>
+
+        <details>
+          <summary>間違えた問題や未回答問題だけを学べますか？</summary>
+          <p>はい。「間違えた問題」「未回答だけ出題」から対象の問題だけを学べます。ブックマークした問題や、間隔反復で復習時期になった問題にも取り組めます。</p>
+        </details>
+
+        <details>
+          <summary>ランダム出題の問題数は選べますか？</summary>
+          <p>はい。10問、25問、50問から選択できます。</p>
+        </details>
+
+        <details>
+          <summary>問題に自分のメモを残せますか？</summary>
+          <p>はい。問題画面右上の「…」から「問題メモ」を選び、問題ごとに最大500文字のメモを保存できます。</p>
+        </details>
+
+        <details>
+          <summary>学習通知を設定できますか？</summary>
+          <p>はい。ホーム画面の歯車アイコンから「学習設定」を開き、「毎日通知する」をオンにして通知時刻を選んでください。iOSで通知を許可する必要があります。</p>
+        </details>
+
+        <details>
+          <summary>試験日までの日数を表示できますか？</summary>
+          <p>はい。「学習設定」で級ごとに試験日を設定すると、ホーム画面に残り日数が表示されます。</p>
+        </details>
+
+        <details>
+          <summary>学習データを別の端末と同期できますか？</summary>
+          <p>はい。「学習設定」でiCloud同期をオンにすると、同じApple Accountを使用している端末間で、回答履歴、習得状況、ブックマーク、メモ、試験日、連続学習日数を同期できます。iCloudが利用できる状態であることをご確認ください。</p>
+        </details>
+
+        <details>
+          <summary>学習記録を最初からやり直せますか？</summary>
+          <p>はい。ホーム画面上部のグラフアイコンから「学習記録」を開き、「学習記録をリセット」を選択してください。回答履歴、習得状況、ブックマーク、メモ、試験日、連続学習日数が削除されます。</p>
+        </details>
+
+        <details>
+          <summary>広告は表示されますか？</summary>
+          <p>本アプリは無料提供を支えるため、Google AdMobのバナー広告とインタースティシャル広告を表示します。全画面広告は学習結果を確認した後の区切りでのみ表示し、短時間に連続表示しない設計です。</p>
+        </details>
+
+        <details>
+          <summary>広告やトラッキングの選択を変更できますか？</summary>
+          <p>iOSのトラッキング許可は、iOSの「設定」から変更できます。対象地域で広告のプライバシー設定を再表示できる場合は、アプリの「学習設定」に「広告のプライバシー設定」が表示されます。</p>
+        </details>
+
+        <details>
+          <summary>アカウント登録は必要ですか？</summary>
+          <p>いいえ。ログインやアカウント登録は必要ありません。学習データは端末内に保存され、iCloud同期をオンにした場合のみAppleのiCloudにも保存されます。</p>
+        </details>
+
+        <details>
+          <summary>問題の誤りを見つけました。</summary>
+          <p>問題画面右上の「…」から「問題の誤り報告」を選んでください。問題IDと問題文が自動的に報告文へ入ります。メールを利用できない場合は、共有機能から報告文を送ることもできます。</p>
+        </details>
+
+        <details>
+          <summary>アプリの不具合について問い合わせるには？</summary>
+          <p>発生した現象、端末名、iOSのバージョン、アプリのバージョン、再現手順をお知らせください。可能であればスクリーンショットも添えて、下記メールアドレスまでご連絡ください。</p>
+        </details>
+
+        <section class="contact">
+          <h2>お問い合わせ</h2>
+          <p>📩 <strong>メール：</strong> <a href="mailto:support@hamameapp.xyz">support@hamameapp.xyz</a></p>
+          <p class="small">お問い合わせ内容によっては、返信までお時間をいただく場合があります。</p>
+        </section>
+
+        <div class="note small">
+          <strong>重要：</strong>掲載問題は学習用に独自作成したもので、公益財団法人実務技能検定協会の公式問題・過去問題の転載ではありません。本アプリは同協会の公式アプリではなく、同協会との提携・承認関係もありません。試験日程や受験方法などの最新情報は、必ず<a href="https://jitsumu-ginou-kentei.jp/HS/" target="_blank" rel="noopener noreferrer">同協会の公式サイト</a>でご確認ください。
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="en" lang="en">
+        <h1>Secretary Exam NOTE Support</h1>
+        <p>Information and support for “Secretary Exam NOTE – Grade 2 &amp; 3 Prep.”</p>
+
+        <h2>FAQ</h2>
+
+        <details open>
+          <summary>What can I do with this app?</summary>
+          <p>You can prepare for Japan’s Secretary Skills Test Grades 2 and 3 with multiple-choice and typed-answer questions. Features include study by topic, a daily set of 10 questions, review of incorrect answers, spaced repetition, flashcards, random practice, and CBT-style mock exams.</p>
+        </details>
+
+        <details>
+          <summary>How many questions are included?</summary>
+          <p>The App includes 160 Grade 2 questions and 160 Grade 3 questions, for a total of 320. You can switch grades from the Home screen.</p>
+        </details>
+
+        <details>
+          <summary>What is included in the CBT-style mock exam?</summary>
+          <p>Each grade includes a 33-question mock exam: 31 multiple-choice questions and 2 typed-answer questions. Results are shown separately for theory and practical sections.</p>
+        </details>
+
+        <details>
+          <summary>Can I study only incorrect or unanswered questions?</summary>
+          <p>Yes. You can study incorrect answers, unanswered questions, bookmarked questions, and questions that are due for review through spaced repetition.</p>
+        </details>
+
+        <details>
+          <summary>Can I choose the size of a random practice set?</summary>
+          <p>Yes. You can choose 10, 25, or 50 questions.</p>
+        </details>
+
+        <details>
+          <summary>Can I add notes to questions?</summary>
+          <p>Yes. Tap the “…” button on a question screen, choose “Question Note,” and save a note of up to 500 characters for that question.</p>
+        </details>
+
+        <details>
+          <summary>Can I set daily study reminders?</summary>
+          <p>Yes. Open “Learning Settings” from the gear icon, enable daily reminders, and choose a time. Notification permission must also be enabled in iOS.</p>
+        </details>
+
+        <details>
+          <summary>Can I sync learning data between devices?</summary>
+          <p>Yes. Enable iCloud sync in “Learning Settings” to synchronize answer history, mastery status, bookmarks, notes, exam dates, and learning streaks between devices using the same Apple Account.</p>
+        </details>
+
+        <details>
+          <summary>Can I reset my learning record?</summary>
+          <p>Yes. Open “Learning Record” from the graph icon and choose “Reset Learning Record.” This deletes answer history, mastery status, bookmarks, notes, exam dates, and learning streaks.</p>
+        </details>
+
+        <details>
+          <summary>Does the App show ads?</summary>
+          <p>The App displays Google AdMob banner and interstitial ads. Full-screen ads are shown only at natural breaks after viewing learning results and are not displayed repeatedly within a short period.</p>
+        </details>
+
+        <details>
+          <summary>Can I change my advertising or tracking choices?</summary>
+          <p>You can change the iOS tracking permission in iOS Settings. Where required, an “Advertising Privacy Settings” option appears under “Learning Settings” so you can reopen available privacy choices.</p>
+        </details>
+
+        <details>
+          <summary>Do I need to create an account?</summary>
+          <p>No. No login or account registration is required. Learning data is stored on your device and, only if you enable iCloud sync, in Apple iCloud.</p>
+        </details>
+
+        <details>
+          <summary>I found an error in a question.</summary>
+          <p>Tap the “…” button on the question screen and choose “Report a Question Error.” The question ID and text are added to the report automatically. If email is unavailable, you can send the report text through the system share sheet.</p>
+        </details>
+
+        <details>
+          <summary>How do I report an app issue?</summary>
+          <p>Please email us with a description of the issue, your device model, iOS version, app version, and steps to reproduce it. Include a screenshot if possible.</p>
+        </details>
+
+        <section class="contact">
+          <h2>Contact</h2>
+          <p>📩 <strong>Email:</strong> <a href="mailto:support@hamameapp.xyz">support@hamameapp.xyz</a></p>
+          <p class="small">Depending on the nature of your inquiry, a response may take some time.</p>
+        </section>
+
+        <div class="note small">
+          <strong>Important:</strong> All questions in the App were independently created for study purposes and are not official or reproduced past questions of the Institute of Jitsumu Ginou Kentei. The App is not an official app of, affiliated with, or endorsed by the Institute. Please check the Institute’s official website for current exam dates and application information.
+        </div>
+      </section>
+    </main>
+
+    <footer><p>© 2026 HamameApp</p></footer>
+  </div>
+</body>
+</html>
