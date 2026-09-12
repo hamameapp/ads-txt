@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support for Who's the Culprit? – Murder Sudoku">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f8f1e7">
+  <title>サポート | 犯人は誰？</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c94f5c'/%3E%3Ccircle cx='28' cy='27' r='13' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M38 37l12 12' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root { --paper:#f8f1e7; --card:#fffdf9; --ink:#263348; --muted:#6f7785; --accent:#c94f5c; --accent-soft:#f7dfe2; --line:#eaded1; --shadow:0 18px 55px rgba(38,51,72,.08); }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 100% 0,rgba(201,79,92,.08) 0 170px,transparent 171px),radial-gradient(circle at 0 100%,rgba(225,188,105,.10) 0 210px,transparent 211px),var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Noto Sans",sans-serif; font-size:16px; line-height:1.7; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    .page { width:min(820px,calc(100% - 32px)); margin:0 auto; padding:42px 0 64px; }
+    header { display:flex; align-items:center; gap:16px; margin-bottom:26px; }
+    .mark { width:58px; height:58px; flex:0 0 auto; border-radius:18px; display:grid; place-items:center; color:white; background:var(--accent); box-shadow:0 10px 24px rgba(201,79,92,.22); }
+    .mark svg { width:32px; height:32px; }
+    h1 { margin:0; font-size:clamp(1.65rem,5vw,2.25rem); line-height:1.25; }
+    .app-name { margin:4px 0 0; color:var(--muted); font-weight:650; }
+    .language-switcher { display:inline-flex; gap:4px; padding:4px; margin-bottom:18px; background:rgba(255,255,255,.7); border:1px solid var(--line); border-radius:14px; }
+    .language-switcher button { min-width:70px; min-height:42px; padding:8px 14px; border:0; border-radius:10px; color:var(--muted); background:transparent; font:inherit; font-weight:750; cursor:pointer; }
+    .language-switcher button[aria-pressed="true"] { color:white; background:var(--accent); }
+    main { padding:clamp(24px,5vw,48px); background:rgba(255,253,249,.96); border:1px solid rgba(201,79,92,.18); border-radius:28px; box-shadow:var(--shadow); }
+    .summary { margin:0 0 28px; padding:18px 20px; background:var(--accent-soft); border-left:5px solid var(--accent); border-radius:14px; font-weight:650; }
+    h2 { margin:32px 0 12px; font-size:1.22rem; line-height:1.45; }
+    details { border-top:1px solid var(--line); }
+    details:last-of-type { border-bottom:1px solid var(--line); }
+    summary { padding:17px 2px; cursor:pointer; font-weight:750; }
+    details p { margin:0 2px 18px; color:var(--muted); }
+    .contact { margin-top:34px; padding:24px; border-radius:18px; background:#fff; border:1px solid var(--line); }
+    .contact h2 { margin-top:0; }
+    .contact p { margin:0 0 14px; }
+    .mail { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:12px 20px; border-radius:14px; color:white; background:var(--accent); text-decoration:none; font-weight:800; }
+    .note { color:var(--muted); font-size:.94rem; }
+    footer { padding:24px 4px 0; text-align:center; color:var(--muted); font-size:.88rem; }
+    footer a { margin-left:12px; font-weight:700; }
+    [data-language-panel][hidden] { display:none; }
+    @media (max-width:560px) { .page{width:min(100% - 22px,820px);padding-top:26px} main{border-radius:22px}.language-switcher{display:flex}.language-switcher button{flex:1;min-width:0}.contact{padding:20px} }
+    @media (prefers-reduced-motion:no-preference) { main{animation:enter .42s ease-out both}@keyframes enter{from{opacity:0;transform:translateY(8px)}} }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="5"/><path d="M28.5 28.5 39 39" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <div><h1 id="page-title">サポート</h1><p class="app-name">犯人は誰？ — マーダー数独</p></div>
+    </header>
+
+    <nav class="language-switcher" aria-label="Language">
+      <button type="button" data-language="ja" aria-pressed="true">日本語</button>
+      <button type="button" data-language="en" aria-pressed="false">English</button>
+      <button type="button" data-language="de" aria-pressed="false">Deutsch</button>
+    </nav>
+
+    <main>
+      <article data-language-panel="ja">
+        <p class="summary">「犯人は誰？ — マーダー数独」をご利用いただきありがとうございます。遊び方や不具合について、まず以下をご確認ください。</p>
+        <h2>よくある質問</h2>
+        <details><summary>ゲームの進め方が分かりません</summary><p>証言を手がかりに全員の位置を決め、各行・各列に人物が重ならないよう配置します。すべて配置したら「犯人を特定する」を押してください。被害者と同じ部屋にいる1人が犯人です。</p></details>
+        <details><summary>配置した人物を移動するには？</summary><p>盤面上の人物をタップすると、その人物を持ち直した状態になります。続けて移動先のマスをタップしてください。</p></details>
+        <details><summary>広告のプライバシー設定を変更したい</summary><p>対象地域では、アプリ内の設定画面から広告に関するプライバシー設定を確認・変更できます。</p></details>
+        <details><summary>進行状況を別の端末へ移せますか？</summary><p>進行状況は端末内に保存されます。現在は端末間の同期や引き継ぎには対応していません。アプリを削除すると進行状況も削除される場合があります。</p></details>
+        <details><summary>問題が解けない、または表示がおかしい</summary><p>事件番号、端末名、iOSのバージョン、アプリのバージョン、状況が分かるスクリーンショットを添えてお問い合わせください。</p></details>
+        <section class="contact"><h2>お問い合わせ</h2><p>解決しない場合は、メールでご連絡ください。</p><a class="mail" href="mailto:hamameapp@gmail.com?subject=MurderSudoku%20Support">hamameapp@gmail.com</a><p class="note">返信には数日かかる場合があります。</p></section>
+      </article>
+
+      <article data-language-panel="en" lang="en" hidden>
+        <p class="summary">Thank you for playing “Who’s the Culprit? — Murder Sudoku.” Please check the answers below if you need help or encounter a problem.</p>
+        <h2>Frequently asked questions</h2>
+        <details><summary>How do I play?</summary><p>Use the witness statements to place every suspect. A person may appear only once in each row and column. When everyone is placed, tap “Identify the Culprit.” The one suspect in the same room as the victim is the culprit.</p></details>
+        <details><summary>How do I move a person I already placed?</summary><p>Tap the person on the board to pick them up, then tap the new square where you want to place them.</p></details>
+        <details><summary>How can I change my advertising privacy choices?</summary><p>In eligible regions, you can review or change your advertising privacy choices from the App’s Settings screen.</p></details>
+        <details><summary>Can I transfer progress to another device?</summary><p>Progress is stored locally on your device. Syncing and transfer between devices are not currently supported. Deleting the App may also delete your progress.</p></details>
+        <details><summary>A case cannot be solved or the display looks wrong</summary><p>Please contact us with the case number, device model, iOS version, App version, and a screenshot showing the issue.</p></details>
+        <section class="contact"><h2>Contact</h2><p>If you still need help, send us an email.</p><a class="mail" href="mailto:hamameapp@gmail.com?subject=MurderSudoku%20Support">hamameapp@gmail.com</a><p class="note">Please allow a few days for a reply.</p></section>
+      </article>
+
+      <article data-language-panel="de" lang="de" hidden>
+        <p class="summary">Vielen Dank, dass Sie „Wer ist der Täter? — Mord-Sudoku“ spielen. Wenn Sie Hilfe benötigen oder ein Problem auftritt, finden Sie hier erste Antworten.</p>
+        <h2>Häufig gestellte Fragen</h2>
+        <details><summary>Wie funktioniert das Spiel?</summary><p>Nutzen Sie die Zeugenaussagen, um alle verdächtigen Personen zu platzieren. In jeder Zeile und Spalte darf eine Person nur einmal vorkommen. Wenn alle platziert sind, tippen Sie auf „Täter ermitteln“. Die einzige verdächtige Person im selben Raum wie das Opfer ist der Täter.</p></details>
+        <details><summary>Wie verschiebe ich eine bereits platzierte Person?</summary><p>Tippen Sie auf die Person auf dem Spielfeld, um sie aufzunehmen. Tippen Sie anschließend auf das neue Feld.</p></details>
+        <details><summary>Wie ändere ich meine Datenschutz-Auswahl für Werbung?</summary><p>In den dafür vorgesehenen Regionen können Sie Ihre Datenschutz-Auswahl für Werbung später in den Einstellungen der App prüfen oder ändern.</p></details>
+        <details><summary>Kann ich meinen Fortschritt auf ein anderes Gerät übertragen?</summary><p>Der Fortschritt wird lokal auf Ihrem Gerät gespeichert. Eine Synchronisierung oder Übertragung zwischen Geräten wird derzeit nicht unterstützt. Beim Löschen der App kann auch der Fortschritt gelöscht werden.</p></details>
+        <details><summary>Ein Fall ist nicht lösbar oder die Anzeige ist fehlerhaft</summary><p>Senden Sie uns bitte die Fallnummer, das Gerätemodell, die iOS-Version, die App-Version und einen Screenshot, auf dem das Problem zu sehen ist.</p></details>
+        <section class="contact"><h2>Kontakt</h2><p>Wenn Sie weitere Hilfe benötigen, schreiben Sie uns eine E-Mail.</p><a class="mail" href="mailto:hamameapp@gmail.com?subject=MurderSudoku%20Support">hamameapp@gmail.com</a><p class="note">Die Antwort kann einige Tage dauern.</p></section>
+      </article>
+    </main>
+
+    <footer>© 2026 Hamame <a href="../privacy/">Privacy Policy</a></footer>
+  </div>
+  <script>
+    const titles={ja:['サポート','犯人は誰？ — マーダー数独'],en:['Support','Who’s the Culprit? — Murder Sudoku'],de:['Support','Wer ist der Täter? — Mord-Sudoku']};
+    const buttons=document.querySelectorAll('[data-language]');
+    const panels=document.querySelectorAll('[data-language-panel]');
+    function showLanguage(language){document.documentElement.lang=language;buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));panels.forEach(panel=>{panel.hidden=panel.dataset.languagePanel!==language});document.getElementById('page-title').textContent=titles[language][0];document.querySelector('.app-name').textContent=titles[language][1];document.title=`${titles[language][0]} | ${titles[language][1]}`;try{localStorage.setItem('murder-sudoku-support-language',language)}catch(_){}}
+    buttons.forEach(button=>button.addEventListener('click',()=>showLanguage(button.dataset.language)));
+    let preferred='ja';try{preferred=localStorage.getItem('murder-sudoku-support-language')||navigator.language.slice(0,2)}catch(_){}showLanguage(['ja','en','de'].includes(preferred)?preferred:'en');
+  </script>
+</body>
+</html>

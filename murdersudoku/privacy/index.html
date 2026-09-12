@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for Who's the Culprit? – Murder Sudoku">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f8f1e7">
+  <title>プライバシーポリシー | 犯人は誰？</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c94f5c'/%3E%3Ccircle cx='28' cy='27' r='13' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M38 37l12 12' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --paper: #f8f1e7;
+      --card: #fffdf9;
+      --ink: #263348;
+      --muted: #6f7785;
+      --accent: #c94f5c;
+      --accent-soft: #f7dfe2;
+      --line: #eaded1;
+      --shadow: 0 18px 55px rgba(38, 51, 72, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0, rgba(201,79,92,.08) 0 170px, transparent 171px),
+        radial-gradient(circle at 0 100%, rgba(225,188,105,.10) 0 210px, transparent 211px),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.78;
+      min-height: 100vh;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .page { width: min(820px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 64px; }
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+    .mark {
+      width: 58px; height: 58px; flex: 0 0 auto; border-radius: 18px;
+      display: grid; place-items: center; color: white; background: var(--accent);
+      box-shadow: 0 10px 24px rgba(201,79,92,.22);
+    }
+    .mark svg { width: 32px; height: 32px; }
+    h1 { margin: 0; font-size: clamp(1.65rem, 5vw, 2.25rem); line-height: 1.25; letter-spacing: .01em; }
+    .app-name { margin: 4px 0 0; color: var(--muted); font-weight: 650; }
+    .language-switcher {
+      display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 18px;
+      background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 14px;
+    }
+    .language-switcher button {
+      min-width: 70px; min-height: 42px; padding: 8px 14px; border: 0; border-radius: 10px;
+      color: var(--muted); background: transparent; font: inherit; font-weight: 750; cursor: pointer;
+    }
+    .language-switcher button[aria-pressed="true"] { color: white; background: var(--accent); }
+    main {
+      padding: clamp(24px, 5vw, 48px); background: rgba(255,253,249,.96);
+      border: 1px solid rgba(201,79,92,.18); border-radius: 28px; box-shadow: var(--shadow);
+    }
+    .summary {
+      margin: 0 0 30px; padding: 18px 20px; background: var(--accent-soft);
+      border-left: 5px solid var(--accent); border-radius: 14px; font-weight: 650;
+    }
+    h2 { margin: 34px 0 9px; font-size: 1.16rem; line-height: 1.45; }
+    p { margin: 0 0 12px; }
+    ul { margin: 8px 0 14px; padding-left: 1.4em; }
+    li + li { margin-top: 5px; }
+    .meta { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: .94rem; }
+    footer { padding: 24px 4px 0; text-align: center; color: var(--muted); font-size: .88rem; }
+    footer a { margin-left: 12px; font-weight: 700; }
+    [data-language-panel][hidden] { display: none; }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 22px, 820px); padding-top: 26px; }
+      main { border-radius: 22px; }
+      .language-switcher { display: flex; }
+      .language-switcher button { flex: 1; min-width: 0; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      main { animation: enter .42s ease-out both; }
+      @keyframes enter { from { opacity: 0; transform: translateY(8px); } }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="5"/><path d="M28.5 28.5 39 39" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <h1 id="page-title">プライバシーポリシー</h1>
+        <p class="app-name">犯人は誰？ — マーダー数独</p>
+      </div>
+    </header>
+
+    <nav class="language-switcher" aria-label="Language">
+      <button type="button" data-language="ja" aria-pressed="true">日本語</button>
+      <button type="button" data-language="en" aria-pressed="false">English</button>
+      <button type="button" data-language="de" aria-pressed="false">Deutsch</button>
+    </nav>
+
+    <main>
+      <article data-language-panel="ja">
+        <p class="summary">「犯人は誰？ — マーダー数独」（以下「本アプリ」）は、利用者のプライバシーを尊重します。本アプリはアカウント登録を必要とせず、氏名、メールアドレス、連絡先、正確な位置情報を開発者が直接収集することはありません。</p>
+
+        <h2>1. 端末内に保存する情報</h2>
+        <p>本アプリは、ゲームの進行状況、解決済み事件、言語設定、チュートリアルの表示状態などを利用者の端末内に保存します。これらの情報はアプリの機能を提供するために使用され、開発者のサーバーへ送信されません。アプリを削除すると、通常これらの情報も削除されます。</p>
+
+        <h2>2. 広告について</h2>
+        <p>本アプリは広告配信のためにGoogle AdMobを使用します。Googleおよび広告パートナーは、広告の配信、効果測定、不正利用の防止などのため、端末情報、IPアドレス、広告識別子、広告の表示・操作情報、診断情報などを処理する場合があります。処理される情報や利用目的の詳細は、<a href="https://policies.google.com/privacy" rel="noopener noreferrer">Googleプライバシーポリシー</a>をご確認ください。</p>
+
+        <h2>3. 欧州地域における同意</h2>
+        <p>欧州経済領域（EEA）、英国、スイスなど、同意が必要な地域では、Google User Messaging Platformを通じて広告に関する選択肢を表示します。同意が確認されるまで、本アプリは広告をリクエストしません。対象となる利用者は、アプリ内の設定画面から広告に関するプライバシー設定を後から確認・変更できます。</p>
+
+        <h2>4. 第三者への提供</h2>
+        <p>開発者は、本アプリを通じて取得した個人情報を販売しません。広告配信に伴うデータ処理については、Googleおよび同社が利用する広告パートナーの方針が適用されます。</p>
+
+        <h2>5. ポリシーの変更</h2>
+        <p>本ポリシーは、アプリの機能、利用するサービス、法令等の変更に応じて改定することがあります。重要な変更がある場合は、このページでお知らせします。</p>
+
+        <h2>6. お問い合わせ</h2>
+        <p>本ポリシーに関するお問い合わせは、<a href="mailto:hamameapp@gmail.com">hamameapp@gmail.com</a>までお願いいたします。</p>
+        <p class="meta">制定日：2026年9月12日<br>運営者：Hamame</p>
+      </article>
+
+      <article data-language-panel="en" lang="en" hidden>
+        <p class="summary">“Who’s the Culprit? — Murder Sudoku” (the “App”) respects your privacy. The App does not require an account, and the developer does not directly collect your name, email address, contacts, or precise location.</p>
+
+        <h2>1. Information stored on your device</h2>
+        <p>The App stores game progress, solved cases, language preferences, tutorial status, and similar settings locally on your device. This information is used to provide the App’s features and is not sent to the developer’s servers. It is normally removed when you delete the App.</p>
+
+        <h2>2. Advertising</h2>
+        <p>The App uses Google AdMob to display advertisements. Google and its advertising partners may process device information, IP addresses, advertising identifiers, ad impressions and interactions, diagnostic information, and related data for ad delivery, measurement, and fraud prevention. For details about the information processed and its purposes, see the <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
+
+        <h2>3. Consent in European regions</h2>
+        <p>In regions where consent is required, including the European Economic Area (EEA), the United Kingdom, and Switzerland, the App presents advertising privacy choices through Google’s User Messaging Platform. The App does not request ads until the applicable consent status has been obtained. Eligible users can review or change their advertising privacy choices later from the App’s Settings screen.</p>
+
+        <h2>4. Sharing with third parties</h2>
+        <p>The developer does not sell personal information collected through the App. Data processing associated with advertising is governed by the policies of Google and the advertising partners it uses.</p>
+
+        <h2>5. Changes to this policy</h2>
+        <p>This policy may be updated when the App’s features, third-party services, or applicable requirements change. Material changes will be announced on this page.</p>
+
+        <h2>6. Contact</h2>
+        <p>For questions about this policy, contact <a href="mailto:hamameapp@gmail.com">hamameapp@gmail.com</a>.</p>
+        <p class="meta">Effective date: September 12, 2026<br>Operator: Hamame</p>
+      </article>
+
+      <article data-language-panel="de" lang="de" hidden>
+        <p class="summary">„Wer ist der Täter? — Mord-Sudoku“ (nachfolgend „App“) respektiert Ihre Privatsphäre. Für die Nutzung ist kein Konto erforderlich. Der Entwickler erhebt weder Ihren Namen noch Ihre E-Mail-Adresse, Ihre Kontakte oder Ihren genauen Standort direkt.</p>
+
+        <h2>1. Auf Ihrem Gerät gespeicherte Daten</h2>
+        <p>Die App speichert Spielfortschritt, gelöste Fälle, Spracheinstellungen, den Status der Einführung und ähnliche Einstellungen lokal auf Ihrem Gerät. Diese Daten dienen ausschließlich der Bereitstellung der App-Funktionen und werden nicht an die Server des Entwicklers übermittelt. Beim Löschen der App werden sie in der Regel ebenfalls gelöscht.</p>
+
+        <h2>2. Werbung</h2>
+        <p>Die App verwendet Google AdMob zur Anzeige von Werbung. Google und seine Werbepartner können Geräteinformationen, IP-Adressen, Werbe-IDs, Anzeigenaufrufe und -interaktionen, Diagnosedaten und ähnliche Informationen verarbeiten, um Werbung bereitzustellen und zu messen sowie Missbrauch zu verhindern. Weitere Informationen finden Sie in der <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.</p>
+
+        <h2>3. Einwilligung in europäischen Regionen</h2>
+        <p>In Regionen, in denen eine Einwilligung erforderlich ist – darunter der Europäische Wirtschaftsraum (EWR), das Vereinigte Königreich und die Schweiz – zeigt die App über die User Messaging Platform von Google Auswahlmöglichkeiten zum Datenschutz bei Werbung an. Die App fordert keine Werbung an, bevor der erforderliche Einwilligungsstatus vorliegt. Betroffene Nutzerinnen und Nutzer können ihre Auswahl später in den Einstellungen der App prüfen oder ändern.</p>
+
+        <h2>4. Weitergabe an Dritte</h2>
+        <p>Der Entwickler verkauft keine über die App erhobenen personenbezogenen Daten. Für die Datenverarbeitung im Zusammenhang mit Werbung gelten die Richtlinien von Google und den von Google eingesetzten Werbepartnern.</p>
+
+        <h2>5. Änderungen dieser Erklärung</h2>
+        <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich Funktionen der App, verwendete Dienste oder rechtliche Anforderungen ändern. Wesentliche Änderungen werden auf dieser Seite bekannt gegeben.</p>
+
+        <h2>6. Kontakt</h2>
+        <p>Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie uns unter <a href="mailto:hamameapp@gmail.com">hamameapp@gmail.com</a>.</p>
+        <p class="meta">Gültig ab: 12. September 2026<br>Betreiber: Hamame</p>
+      </article>
+    </main>
+
+    <footer>© 2026 Hamame <a href="../support/">Support</a></footer>
+  </div>
+
+  <script>
+    const titles = {
+      ja: ['プライバシーポリシー', '犯人は誰？ — マーダー数独'],
+      en: ['Privacy Policy', 'Who’s the Culprit? — Murder Sudoku'],
+      de: ['Datenschutzerklärung', 'Wer ist der Täter? — Mord-Sudoku']
+    };
+    const buttons = document.querySelectorAll('[data-language]');
+    const panels = document.querySelectorAll('[data-language-panel]');
+
+    function showLanguage(language) {
+      document.documentElement.lang = language;
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
+      panels.forEach(panel => { panel.hidden = panel.dataset.languagePanel !== language; });
+      document.getElementById('page-title').textContent = titles[language][0];
+      document.querySelector('.app-name').textContent = titles[language][1];
+      document.title = `${titles[language][0]} | ${titles[language][1]}`;
+      try { localStorage.setItem('murder-sudoku-privacy-language', language); } catch (_) {}
+    }
+
+    buttons.forEach(button => button.addEventListener('click', () => showLanguage(button.dataset.language)));
+    let preferred = 'ja';
+    try { preferred = localStorage.getItem('murder-sudoku-privacy-language') || navigator.language.slice(0, 2); } catch (_) {}
+    showLanguage(['ja', 'en', 'de'].includes(preferred) ? preferred : 'en');
+  </script>
+</body>
+</html>
